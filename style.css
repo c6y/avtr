@@ -1,0 +1,25 @@
+body {
+  background-color: grey;
+  text-align: center;
+}
+
+#myCanvas {
+  background-color: yellow;
+  width: 256px;
+  height: 256px;
+  image-rendering: pixelated;
+}
+
+#library {
+  /* background-color: lightgrey; */
+  padding: 1em;
+}
+
+#noseLib, #headLib, #eyesLib {
+}
+
+.headElement {
+  cursor: pointer;
+  background-color: cyan;
+  border: 1px black solid;
+}
