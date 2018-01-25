@@ -26,10 +26,32 @@ function addHeadRect() {
   const ctx = canvas.getContext("2d");
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+  // neck
   ctx.fillStyle = '#FFA080';
   ctx.fillRect(96, 192, 64, 64);
+  // head
   ctx.fillStyle = "#F8AA8F";
   ctx.fillRect(32, 32, 192, 192);
+}
+
+/**
+ * draw a diamond shaped head
+ */
+function addHeadDiamond() {
+  const canvas = document.getElementById("headCanvas");
+  const ctx = canvas.getContext("2d");
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  // neck
+  ctx.fillStyle = '#FFA080';
+  ctx.fillRect(96, 192, 64, 64);
+  // head
+  ctx.fillStyle = '#F8AA8F';
+  ctx.beginPath();
+  ctx.moveTo(128, 4);
+  ctx.lineTo(252, 128);
+  ctx.lineTo(128, 252);
+  ctx.lineTo(4, 128);
+  ctx.fill();
 }
 
 let headFile;
