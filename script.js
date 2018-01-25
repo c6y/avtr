@@ -1,32 +1,80 @@
-function clickHead() {
-  document.getElementById("demo").innerHTML = "head clicked";
-}
-function clickNose() {
-  document.getElementById("demo").innerHTML = "nose clicked";
-}
-function addFoo() {
-  var canvas = document.getElementById("headCanvas");
-  var ctx = canvas.getContext("2d");
-  ctx.fillStyle = "#FF0000";
-  ctx.fillRect(0, 0, 256, 256);
+/**
+ * draw a circle and a neck
+ */
+function addHeadCircle() {
+  const canvas = document.getElementById("headCanvas");
+  const ctx = canvas.getContext("2d");
+
+  const centerX = canvas.width / 2;
+  const centerY = canvas.height / 2;
+  const radius = 108;
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = '#FFA080';
+  ctx.fillRect(96, 192, 64, 64);
+  ctx.beginPath();
+  ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+  ctx.fillStyle = '#F8AA8F';
+  ctx.fill();
 }
 
-function addBar() {
-  var canvas = document.getElementById("headCanvas");
-  var ctx = canvas.getContext("2d");
-  ctx.fillStyle = "#00FF00";
-  ctx.fillRect(128, 128, 64, 64);
+/**
+ * draw a rectangle and neck
+ */
+function addHeadRect() {
+  const canvas = document.getElementById("headCanvas");
+  const ctx = canvas.getContext("2d");
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = '#FFA080';
+  ctx.fillRect(96, 192, 64, 64);
+  ctx.fillStyle = "#F8AA8F";
+  ctx.fillRect(32, 32, 192, 192);
 }
+
+let headFile;
 
 function addHeadElement() {
   const img = new Image();
   img.src = event.target.src;
+  headFile = img.src;
   img.onload = function() {
     const canvas = document.getElementById("headCanvas");
     const ctx = canvas.getContext("2d");
     ctx.mozImageSmoothingEnabled = false;
     ctx.msImageSmoothingEnabled = false;
     ctx.imageSmoothingEnabled = false;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(img, 0, 0, 256, 256);
+  }
+}
+
+function addEyesElement() {
+  const img = new Image();
+  img.src = event.target.src;
+  headFile = img.src;
+  img.onload = function() {
+    const canvas = document.getElementById("eyesCanvas");
+    const ctx = canvas.getContext("2d");
+    ctx.mozImageSmoothingEnabled = false;
+    ctx.msImageSmoothingEnabled = false;
+    ctx.imageSmoothingEnabled = false;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(img, 0, 0, 256, 256);
+  }
+}
+
+function addMouthElement() {
+  const img = new Image();
+  img.src = event.target.src;
+  headFile = img.src;
+  img.onload = function() {
+    const canvas = document.getElementById("mouthCanvas");
+    const ctx = canvas.getContext("2d");
+    ctx.mozImageSmoothingEnabled = false;
+    ctx.msImageSmoothingEnabled = false;
+    ctx.imageSmoothingEnabled = false;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(img, 0, 0, 256, 256);
   }
 }
@@ -34,12 +82,18 @@ function addHeadElement() {
 function addNoseElement() {
   const img = new Image();
   img.src = event.target.src;
+  headFile = img.src;
   img.onload = function() {
     const canvas = document.getElementById("noseCanvas");
     const ctx = canvas.getContext("2d");
     ctx.mozImageSmoothingEnabled = false;
     ctx.msImageSmoothingEnabled = false;
     ctx.imageSmoothingEnabled = false;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(img, 0, 0, 256, 256);
   }
+}
+
+function showHeadFileSrc() {
+  console.log('headFile: ' + headFile);
 }

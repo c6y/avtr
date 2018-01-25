@@ -1,35 +1,69 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>eBoy Avatar Builder</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="script.js"></script>
-  </head>
-  <body>
+<head>
+  <title>eBoy Avatar Builder</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="script.js"></script>
+</head>
+<body>
 
-    <!-- <div class="box"> -->
-      <div id="canvasBox">
-        <!-- <canvas id="backCanvas" width="256" height="256">
-        </canvas> -->
-        <canvas id="headCanvas" width="256" height="256">
-        </canvas>
-        <canvas id="eyesCanvas" width="256" height="256">
-        </canvas>
-        <canvas id="noseCanvas" width="256" height="256">
-        </canvas>
-      </div>
-    <!-- </div> -->
+  <div id="viewport" onclick="showHeadFileSrc()">
+    <canvas id="backCanvas" width="256" height="256">
+    </canvas>
+    <canvas id="headCanvas" width="256" height="256">
+    </canvas>
+    <canvas id="eyesCanvas" width="256" height="256">
+    </canvas>
+    <canvas id="mouthCanvas" width="256" height="256">
+    </canvas>
+    <canvas id="noseCanvas" width="256" height="256">
+    </canvas>
+  </div>
 
-    <div id="library">
-      <div id="headLib">
+  <div id="library">
+    <div class="heads">
+      <span class="headLib">
         <img src="media/head/head-001.png" onclick="addHeadElement()" class="headElement">
-      </div>
-      <div id="eyesLib">
-        <img src="media/eyes/eyes-001.png" onclick="addHeadElement()" class="headElement">
-      </div>
-      <div id="noseLib">
-        <img src="media/nose/nose-001.png" onclick="addNoseElement()" class="noseElement">
-      </div>
+      </span>
+      <span class="headLib">
+        <!-- <img src="media/head/head-002.png" onclick="addHeadElement()" class="headElement"> -->
+        <img src="media/head/head-002.png" onclick="addHeadRect()" class="headElement">
+      </span>
+      <span class="headLib">
+        <!-- <img src="media/head/head-003.png" onclick="addHeadElement()" class="headElement"> -->
+        <img src="media/head/head-003.png" onclick="addHeadCircle()" class="headElement">
+      </span>
     </div>
-  </body>
+    <div class="eyes">
+      <span class="eyesLib">
+        <img src="media/eyes/eyes-001.png" onclick="addEyesElement()" class="eyesElement">
+      </span>
+      <span class="eyesLib">
+        <img src="media/eyes/eyes-002.png" onclick="addEyesElement()" class="eyesElement">
+      </span>
+      <span class="eyesLib">
+        <img src="media/eyes/eyes-003.png" onclick="addEyesElement()" class="eyesElement">
+      </span>
+    </div>
+    <div class="mouths">
+      <span class="mouthLib">
+        <img src="media/mouth/mouth-001.png" onclick="addMouthElement()" class="mouthElement">
+      </span>
+      <span class="mouthLib">
+        <img src="media/mouth/mouth-002.png" onclick="addMouthElement()" class="mouthElement">
+      </span>
+      <span class="mouthLib">
+        <img src="media/mouth/mouth-003.png" onclick="addMouthElement()" class="mouthElement">
+      </span>
+    </div>
+    <div class="noses">
+      <span class="noseLib">
+        <img src="media/nose/nose-001.png" onclick="addNoseElement()" class="noseElement">
+      </span>
+      <span class="noseLib">
+        <img src="media/nose/nose-002.png" onclick="addNoseElement()" class="noseElement">
+      </span>
+    </div>
+  </div>
+</body>
 </html>
