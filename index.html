@@ -7,18 +7,28 @@
   </head>
   <body>
 
-    <canvas id="myCanvas" width="64" height="64">
-    </canvas>
+    <!-- <div class="box"> -->
+      <div id="canvasBox">
+        <!-- <canvas id="backCanvas" width="256" height="256">
+        </canvas> -->
+        <canvas id="headCanvas" width="256" height="256">
+        </canvas>
+        <canvas id="eyesCanvas" width="256" height="256">
+        </canvas>
+        <canvas id="noseCanvas" width="256" height="256">
+        </canvas>
+      </div>
+    <!-- </div> -->
 
     <div id="library">
       <div id="headLib">
         <img src="media/head/head-001.png" onclick="addHeadElement()" class="headElement">
       </div>
-      <div id="noseLib">
-        <img src="media/nose/nose-001.png" onclick="addHeadElement()" class="headElement">
-      </div>
       <div id="eyesLib">
         <img src="media/eyes/eyes-001.png" onclick="addHeadElement()" class="headElement">
+      </div>
+      <div id="noseLib">
+        <img src="media/nose/nose-001.png" onclick="addNoseElement()" class="noseElement">
       </div>
     </div>
   </body>

@@ -3,22 +3,56 @@ body {
   text-align: center;
 }
 
-#myCanvas {
-  background-color: yellow;
-  width: 256px;
-  height: 256px;
+.box {
+  /* text-align: center; */
+}
+
+#canvasBox {
+  position: absolute;
+  background-color: orange;
+  display: block;
+  /* width: 256px;
+  height: 256px; */
+  /* left: 50%; */
+  /* z-index: 0; */
+}
+
+#backCanvas, #headCanvas, #eyesCanvas, #noseCanvas {
+  position: absolute;
+  /* left: 0; */
+  /* top: 0; */
   image-rendering: pixelated;
 }
 
+#backCanvas {
+  z-index: 0;
+}
+
+#headCanvas {
+  z-index: 1;
+  background-color: rgba(0, 0, 255, 0.1);
+}
+
+#eyesCanvas {
+  z-index: 2;
+  background-color: rgba(255, 255, 0, 0.1);
+}
+
+#noseCanvas {
+  z-index: 3;
+  background-color: rgba(255, 0, 255, 0.1);
+}
+
+
 #library {
-  /* background-color: lightgrey; */
   padding: 1em;
+  z-index: 100;
 }
 
 #noseLib, #headLib, #eyesLib {
 }
 
-.headElement {
+.headElement, .noseElement {
   cursor: pointer;
   background-color: cyan;
   border: 1px black solid;
