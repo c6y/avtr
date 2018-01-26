@@ -48,6 +48,10 @@ body {
   z-index: 100;
 }
 
+#library img {
+  image-rendering: pixelated;
+}
+
 .noseLib, .headLib, .mouthLib, .eyesLib {
 }
 
