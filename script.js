@@ -95,6 +95,9 @@ function drawHeadDoubleEllipse() {
   ctx.fill();
 }
 
+/**
+ * add eyes to eyes canvas, remove previous eyes
+ */
 function addEyes() {
   const img = new Image();
   img.src = event.target.src;
@@ -110,7 +113,10 @@ function addEyes() {
   }
 }
 
-function addMouth() {
+/**
+ * add mouth to mouth canvas, remove previous mouth
+ */
+ function addMouth() {
   const img = new Image();
   img.src = event.target.src;
   headFile = img.src;
@@ -125,6 +131,9 @@ function addMouth() {
   }
 }
 
+/**
+ * add nose to nose canvas, remove previous nose
+ */
 function addNose() {
   const img = new Image();
   img.src = event.target.src;
@@ -138,4 +147,23 @@ function addNose() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(img, 0, 0, 256, 256);
   }
+}
+
+/**
+ * merge all canvases into one, ready for downloading
+ */
+function mergeCanvases(){
+  var headC = document.getElementById('headCanvas');
+  var eyesC = document.getElementById('eyesCanvas');
+  var noseC = document.getElementById('noseCanvas');
+  var mouthC = document.getElementById('mouthCanvas');
+
+  var canvas = document.getElementById('mergedCanvas');
+  var ctx = canvas.getContext('2d');
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.drawImage(headC, 0, 0);
+  ctx.drawImage(eyesC, 0, 0);
+  ctx.drawImage(noseC, 0, 0);
+  ctx.drawImage(mouthC, 0, 0);
 }
