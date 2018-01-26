@@ -4,10 +4,6 @@ body {
   margin: 16px;
 }
 
-.box {
-  /* text-align: center; */
-}
-
 #viewport {
   background-color: white;
   display: inline-block;
@@ -21,13 +17,10 @@ body {
 }
 
 #backCanvas, #headCanvas, #eyesCanvas, #mouthCanvas, #noseCanvas {
-  /* position: absolute; */
   left: 0;
   top: 0;
   image-rendering: pixelated;
   position: absolute;
-  /* margin-left: -128px; */
-  /* position: 0; */
 }
 
 #backCanvas {
@@ -36,24 +29,19 @@ body {
 
 #headCanvas {
   z-index: 1;
-  /* background-color: rgba(0, 0, 255, 0.1); */
 }
 
 #eyesCanvas {
   z-index: 2;
-  /* background-color: rgba(255, 255, 0, 0.1); */
 }
 
 #mouthCanvas {
   z-index: 3;
-  /* background-color: rgba(255, 255, 0, 0.1); */
 }
 
 #noseCanvas {
   z-index: 4;
-  /* background-color: rgba(255, 0, 255, 0.1); */
 }
-
 
 #library {
   margin: 16px 8px;
@@ -65,6 +53,5 @@ body {
 
 .headElement, .eyesElement, .mouthElement, .noseElement {
   cursor: pointer;
-  background-color: cyan;
-  /* border: 1px black solid; */
+  background-color: white;
 }
