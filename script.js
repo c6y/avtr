@@ -16,6 +16,7 @@ function drawHeadRect() {
   // head
   ctx.fillStyle = "#F8AA8F";
   ctx.fillRect(32, 32, 192, 192);
+  mergeCanvases();
 }
 
 /**
@@ -41,6 +42,7 @@ function drawHeadCircle() {
   ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
   ctx.fillStyle = '#F8AA8F';
   ctx.fill();
+  mergeCanvases();
 }
 
 /**
@@ -67,6 +69,7 @@ function drawHeadDiamond() {
   ctx.lineTo(128, 252);
   ctx.lineTo(4, 128);
   ctx.fill();
+  mergeCanvases();
 }
 
 /**
@@ -93,6 +96,7 @@ function drawHeadDoubleEllipse() {
   ctx.ellipse(128, 172, 100, 72, 0, 0, 90);
   ctx.closePath();
   ctx.fill();
+  mergeCanvases();
 }
 
 /**
@@ -110,6 +114,7 @@ function addEyes() {
     ctx.imageSmoothingEnabled = false;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(img, 0, 0, 256, 256);
+    mergeCanvases();
   }
 }
 
@@ -128,6 +133,7 @@ function addEyes() {
     ctx.imageSmoothingEnabled = false;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(img, 0, 0, 256, 256);
+    mergeCanvases();
   }
 }
 
@@ -146,6 +152,7 @@ function addNose() {
     ctx.imageSmoothingEnabled = false;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(img, 0, 0, 256, 256);
+    mergeCanvases();
   }
 }
 

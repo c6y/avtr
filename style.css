@@ -21,6 +21,7 @@ body {
   top: 0;
   image-rendering: pixelated;
   position: absolute;
+  display: none;
 }
 
 #backCanvas {
@@ -62,4 +63,9 @@ body {
 
 button {
   cursor: pointer;
+}
+
+#download-box {
+  display: block;
+  margin: 16px;
 }
