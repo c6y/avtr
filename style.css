@@ -59,3 +59,7 @@ body {
   cursor: pointer;
   background-color: white;
 }
+
+button {
+  cursor: pointer;
+}

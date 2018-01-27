@@ -153,17 +153,27 @@ function addNose() {
  * merge all canvases into one, ready for downloading
  */
 function mergeCanvases(){
-  var headC = document.getElementById('headCanvas');
-  var eyesC = document.getElementById('eyesCanvas');
-  var noseC = document.getElementById('noseCanvas');
-  var mouthC = document.getElementById('mouthCanvas');
+  const headC = document.getElementById('headCanvas');
+  const eyesC = document.getElementById('eyesCanvas');
+  const noseC = document.getElementById('noseCanvas');
+  const mouthC = document.getElementById('mouthCanvas');
 
-  var canvas = document.getElementById('mergedCanvas');
-  var ctx = canvas.getContext('2d');
+  const canvas = document.getElementById('mergedCanvas');
+  const ctx = canvas.getContext('2d');
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.drawImage(headC, 0, 0);
   ctx.drawImage(eyesC, 0, 0);
   ctx.drawImage(noseC, 0, 0);
   ctx.drawImage(mouthC, 0, 0);
+}
+
+/**
+ * download png of merged canvas
+ */
+function download(){
+  const download = document.getElementById("download");
+  const canvas = document.getElementById('mergedCanvas');
+  const image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+  download.setAttribute("href", image);
 }
