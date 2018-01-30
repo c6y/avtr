@@ -4,18 +4,22 @@
 function drawHeadRect() {
   const canvas = document.getElementById("headCanvas");
   const ctx = canvas.getContext("2d");
+  const width = canvas.width;
+  const height = canvas.height;
+  const centerX = canvas.width / 2;
+  const centerY = canvas.height / 2;
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   // body
   ctx.fillStyle = '#4088ee';
   ctx.beginPath();
-  ctx.moveTo(128, 128);
-  ctx.lineTo(168, 256);
-  ctx.lineTo(88, 256);
+  ctx.moveTo(centerX, centerY);
+  ctx.lineTo(width/64*42, height);
+  ctx.lineTo(width/64*22, height);
   ctx.fill();
   // head
   ctx.fillStyle = "#F8AA8F";
-  ctx.fillRect(32, 32, 192, 192);
+  ctx.fillRect(width/64*8, height/64*8, width/64*48, height/64*48);
   mergeCanvases();
 }
 
