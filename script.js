@@ -4,7 +4,6 @@
 function addHead() {
   const img = new Image();
   img.src = event.target.src;
-  console.log('img.src: ' + img.src);
   headFile = img.src;
   img.onload = function() {
     const canvas = document.getElementById("headCanvas");
@@ -24,7 +23,6 @@ function addHead() {
 function addEyes() {
   const img = new Image();
   img.src = event.target.src;
-  console.log('img.src: ' + img.src);
   headFile = img.src;
   img.onload = function() {
     const canvas = document.getElementById("eyesCanvas");
