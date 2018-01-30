@@ -105,3 +105,24 @@ function download(){
   const image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
   download.setAttribute("href", image);
 }
+
+function removeEyes() {
+  const canvas = document.getElementById("eyesCanvas");
+  const ctx = canvas.getContext("2d");
+  ctx.clearRect(0, 0, avatarW, avatarH);
+  mergeCanvases();
+}
+
+function removeNose() {
+  const canvas = document.getElementById("noseCanvas");
+  const ctx = canvas.getContext("2d");
+  ctx.clearRect(0, 0, avatarW, avatarH);
+  mergeCanvases();
+}
+
+function removeMouth() {
+  const canvas = document.getElementById("mouthCanvas");
+  const ctx = canvas.getContext("2d");
+  ctx.clearRect(0, 0, avatarW, avatarH);
+  mergeCanvases();
+}
