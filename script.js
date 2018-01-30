@@ -1,106 +1,21 @@
 /**
- * draw a rectangle and neck
+ * add head to head canvas, remove previous head
  */
-function drawHeadRect() {
-  const canvas = document.getElementById("headCanvas");
-  const ctx = canvas.getContext("2d");
-  const width = canvas.width;
-  const height = canvas.height;
-  const centerX = canvas.width / 2;
-  const centerY = canvas.height / 2;
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  // body
-  ctx.fillStyle = '#4088ee';
-  ctx.beginPath();
-  ctx.moveTo(centerX, centerY);
-  ctx.lineTo(width/64*42, height);
-  ctx.lineTo(width/64*22, height);
-  ctx.fill();
-  // head
-  ctx.fillStyle = "#F8AA8F";
-  ctx.fillRect(width/64*8, height/64*8, width/64*48, height/64*48);
-  mergeCanvases();
-}
-
-/**
- * draw a circle and a neck
- */
-function drawHeadCircle() {
-  const canvas = document.getElementById("headCanvas");
-  const ctx = canvas.getContext("2d");
-  const centerX = canvas.width / 2;
-  const centerY = canvas.height / 2;
-  const radius = 108;
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  // body
-  ctx.fillStyle = '#33BB55';
-  ctx.beginPath();
-  ctx.moveTo(128, 128);
-  ctx.lineTo(168, 256);
-  ctx.lineTo(88, 256);
-  ctx.fill();
-  // head
-  ctx.beginPath();
-  ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
-  ctx.fillStyle = '#F8AA8F';
-  ctx.fill();
-  mergeCanvases();
-}
-
-/**
- * draw a diamond shaped head
- */
-function drawHeadDiamond() {
-  const canvas = document.getElementById("headCanvas");
-  const ctx = canvas.getContext("2d");
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  // body
-  ctx.fillStyle = '#FF3333';
-  ctx.beginPath();
-  ctx.moveTo(128, 128);
-  ctx.lineTo(168, 256);
-  ctx.lineTo(88, 256);
-  ctx.closePath();
-  ctx.fill();
-  // head
-  ctx.fillStyle = '#F8AA8F';
-  ctx.beginPath();
-  ctx.moveTo(128, 4);
-  ctx.lineTo(252, 128);
-  ctx.lineTo(128, 252);
-  ctx.lineTo(4, 128);
-  ctx.fill();
-  mergeCanvases();
-}
-
-/**
- * draw a double-ellipse shaped head
- */
-function drawHeadDoubleEllipse() {
-  const canvas = document.getElementById("headCanvas");
-  const ctx = canvas.getContext("2d");
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  // body
-  ctx.fillStyle = '#ffdd00';
-  ctx.beginPath();
-  ctx.moveTo(128, 128);
-  ctx.lineTo(168, 256);
-  ctx.lineTo(88, 256);
-  ctx.closePath();
-  ctx.fill();
-  // head
-  ctx.fillStyle = '#F8AA8F';
-  ctx.beginPath();
-  // ctx.ellipse(128, 128, 120, 96, 0, 0, 90);
-  ctx.ellipse(128, 84, 100, 72, 0, 0, 90);
-  ctx.ellipse(128, 172, 100, 72, 0, 0, 90);
-  ctx.closePath();
-  ctx.fill();
-  mergeCanvases();
+function addHead() {
+  const img = new Image();
+  img.src = event.target.src;
+  console.log('img.src: ' + img.src);
+  headFile = img.src;
+  img.onload = function() {
+    const canvas = document.getElementById("headCanvas");
+    const ctx = canvas.getContext("2d");
+    ctx.mozImageSmoothingEnabled = false;
+    ctx.msImageSmoothingEnabled = false;
+    ctx.imageSmoothingEnabled = false;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(img, 0, 0, 256, 256);
+    mergeCanvases();
+  }
 }
 
 /**
@@ -109,6 +24,7 @@ function drawHeadDoubleEllipse() {
 function addEyes() {
   const img = new Image();
   img.src = event.target.src;
+  console.log('img.src: ' + img.src);
   headFile = img.src;
   img.onload = function() {
     const canvas = document.getElementById("eyesCanvas");
