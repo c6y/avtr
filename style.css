@@ -44,6 +44,11 @@ body {
   z-index: 4;
 }
 
+#mergedCanvas {
+  width: 256px;
+  height: 256px;
+}
+
 #library {
   margin: 16px 8px;
   z-index: 100;
