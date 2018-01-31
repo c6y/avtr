@@ -100,43 +100,35 @@ function addNose() {
   }
 }
 
-
-
-// /**
-//  * add nose to nose canvas, remove previous nose
-//  */
-// function addNose() {
-//   const img = new Image();
-//   img.src = event.target.src;
-//   headFile = img.src;
-//   img.onload = function() {
-//     const canvas = document.getElementById("noseCanvas");
-//     const ctx = canvas.getContext("2d");
-//     ctx.mozImageSmoothingEnabled = false;
-//     ctx.msImageSmoothingEnabled = false;
-//     ctx.imageSmoothingEnabled = false;
-//     ctx.clearRect(0, 0, avatarW, avatarH);
-//     ctx.drawImage(img, 0, offsetV, avatarW, avatarH);
-//     mergeCanvases();
-//   }
-// }
-
 /**
  * add mouth to mouth canvas, remove previous mouth
  */
- function addMouth() {
+function addMouth() {
   const img = new Image();
   img.src = event.target.src;
-  headFile = img.src;
-  img.onload = function() {
+  mouthFile = img.src;
+  if (isMouth != mouthFile) {
+    // draw mouth if there's no or different mouth
+    img.onload = function() {
+      const canvas = document.getElementById("mouthCanvas");
+      const ctx = canvas.getContext("2d");
+      ctx.mozImageSmoothingEnabled = false;
+      ctx.msImageSmoothingEnabled = false;
+      ctx.imageSmoothingEnabled = false;
+      ctx.clearRect(0, 0, avatarW, avatarH);
+      ctx.drawImage(img, 0, offsetV, avatarW, avatarH);
+      mergeCanvases();
+      isMouth = mouthFile;
+    }
+    setActiveClass('mouthElement', 'mouthElementActive');
+  } else {
+    // remove mouth if same mouth is on canvas
     const canvas = document.getElementById("mouthCanvas");
     const ctx = canvas.getContext("2d");
-    ctx.mozImageSmoothingEnabled = false;
-    ctx.msImageSmoothingEnabled = false;
-    ctx.imageSmoothingEnabled = false;
     ctx.clearRect(0, 0, avatarW, avatarH);
-    ctx.drawImage(img, 0, offsetV, avatarW, avatarH);
     mergeCanvases();
+    isMouth = null;
+    event.target.setAttribute("class", "mouthElement");
   }
 }
 
