@@ -2,6 +2,11 @@ const avatarW = 512; // avatar width
 const avatarH = 512; // avatar height
 const offsetV = -16;
 
+let isHead = null;
+let isEyes = null;
+let isNose = null;
+let isMouth = null;
+
 /**
  * add head to head canvas, remove previous head
  */
@@ -9,12 +14,32 @@ function addHead() {
   const img = new Image();
   img.src = event.target.src;
   headFile = img.src;
-  img.onload = function() {
+  if (isHead != headFile) {
+    // draw head if there's no or different head
+    img.onload = function() {
+      const canvas = document.getElementById("headCanvas");
+      const ctx = canvas.getContext("2d");
+      ctx.clearRect(0, 0, avatarW, avatarH);
+      ctx.drawImage(img, 0, 0, avatarW, avatarH);
+      mergeCanvases();
+      isHead = headFile;
+    }
+    // remove active class from other active element
+    const elements = document.getElementsByClassName('headElementActive');
+    const requiredElement = elements[0];
+    if(requiredElement) {
+      requiredElement.setAttribute("class", "headElement");
+    }
+    // set active class
+    event.target.setAttribute("class", "headElementActive");
+  } else {
+    // remove head if same head is on canvas
     const canvas = document.getElementById("headCanvas");
     const ctx = canvas.getContext("2d");
     ctx.clearRect(0, 0, avatarW, avatarH);
-    ctx.drawImage(img, 0, 0, avatarW, avatarH);
     mergeCanvases();
+    isHead = null;
+    event.target.setAttribute("class", "headElement");
   }
 }
 
@@ -102,6 +127,17 @@ function download(){
   const canvas = document.getElementById('mergedCanvas');
   const image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
   download.setAttribute("href", image);
+}
+
+/**
+ * remove eyes from canvas
+ */
+function removeHead() {
+  const canvas = document.getElementById("headCanvas");
+  const ctx = canvas.getContext("2d");
+  ctx.clearRect(0, 0, avatarW, avatarH);
+  mergeCanvases();
+  event.target.setAttribute("class", "headElement");
 }
 
 /**
