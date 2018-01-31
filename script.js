@@ -68,18 +68,49 @@ function addEyes() {
   }
 }
 
+/**
+ * add nose to nose canvas, remove previous nose
+ */
+function addNose() {
+  const img = new Image();
+  img.src = event.target.src;
+  noseFile = img.src;
+  if (isNose != noseFile) {
+    // draw nose if there's no or different nose
+    img.onload = function() {
+      const canvas = document.getElementById("noseCanvas");
+      const ctx = canvas.getContext("2d");
+      ctx.mozImageSmoothingEnabled = false;
+      ctx.msImageSmoothingEnabled = false;
+      ctx.imageSmoothingEnabled = false;
+      ctx.clearRect(0, 0, avatarW, avatarH);
+      ctx.drawImage(img, 0, offsetV, avatarW, avatarH);
+      mergeCanvases();
+      isNose = noseFile;
+    }
+    setActiveClass('noseElement', 'noseElementActive');
+  } else {
+    // remove nose if same nose is on canvas
+    const canvas = document.getElementById("noseCanvas");
+    const ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, avatarW, avatarH);
+    mergeCanvases();
+    isNose = null;
+    event.target.setAttribute("class", "noseElement");
+  }
+}
 
 
 
 // /**
-//  * add eyes to eyes canvas, remove previous eyes
+//  * add nose to nose canvas, remove previous nose
 //  */
-// function addEyes() {
+// function addNose() {
 //   const img = new Image();
 //   img.src = event.target.src;
 //   headFile = img.src;
 //   img.onload = function() {
-//     const canvas = document.getElementById("eyesCanvas");
+//     const canvas = document.getElementById("noseCanvas");
 //     const ctx = canvas.getContext("2d");
 //     ctx.mozImageSmoothingEnabled = false;
 //     ctx.msImageSmoothingEnabled = false;
@@ -89,25 +120,6 @@ function addEyes() {
 //     mergeCanvases();
 //   }
 // }
-
-/**
- * add nose to nose canvas, remove previous nose
- */
-function addNose() {
-  const img = new Image();
-  img.src = event.target.src;
-  headFile = img.src;
-  img.onload = function() {
-    const canvas = document.getElementById("noseCanvas");
-    const ctx = canvas.getContext("2d");
-    ctx.mozImageSmoothingEnabled = false;
-    ctx.msImageSmoothingEnabled = false;
-    ctx.imageSmoothingEnabled = false;
-    ctx.clearRect(0, 0, avatarW, avatarH);
-    ctx.drawImage(img, 0, offsetV, avatarW, avatarH);
-    mergeCanvases();
-  }
-}
 
 /**
  * add mouth to mouth canvas, remove previous mouth
