@@ -1,5 +1,6 @@
 const avatarW = 512; // avatar width
 const avatarH = 512; // avatar height
+const offsetV = -16;
 
 /**
  * add head to head canvas, remove previous head
@@ -11,9 +12,6 @@ function addHead() {
   img.onload = function() {
     const canvas = document.getElementById("headCanvas");
     const ctx = canvas.getContext("2d");
-    ctx.mozImageSmoothingEnabled = false;
-    ctx.msImageSmoothingEnabled = false;
-    ctx.imageSmoothingEnabled = false;
     ctx.clearRect(0, 0, avatarW, avatarH);
     ctx.drawImage(img, 0, 0, avatarW, avatarH);
     mergeCanvases();
@@ -34,7 +32,7 @@ function addEyes() {
     ctx.msImageSmoothingEnabled = false;
     ctx.imageSmoothingEnabled = false;
     ctx.clearRect(0, 0, avatarW, avatarH);
-    ctx.drawImage(img, 0, 0, avatarW, avatarH);
+    ctx.drawImage(img, 0, offsetV, avatarW, avatarH);
     mergeCanvases();
   }
 }
@@ -53,7 +51,7 @@ function addNose() {
     ctx.msImageSmoothingEnabled = false;
     ctx.imageSmoothingEnabled = false;
     ctx.clearRect(0, 0, avatarW, avatarH);
-    ctx.drawImage(img, 0, 0, avatarW, avatarH);
+    ctx.drawImage(img, 0, offsetV, avatarW, avatarH);
     mergeCanvases();
   }
 }
@@ -72,7 +70,7 @@ function addNose() {
     ctx.msImageSmoothingEnabled = false;
     ctx.imageSmoothingEnabled = false;
     ctx.clearRect(0, 0, avatarW, avatarH);
-    ctx.drawImage(img, 0, 0, avatarW, avatarH);
+    ctx.drawImage(img, 0, offsetV, avatarW, avatarH);
     mergeCanvases();
   }
 }
@@ -106,6 +104,9 @@ function download(){
   download.setAttribute("href", image);
 }
 
+/**
+ * remove eyes from canvas
+ */
 function removeEyes() {
   const canvas = document.getElementById("eyesCanvas");
   const ctx = canvas.getContext("2d");
@@ -113,6 +114,9 @@ function removeEyes() {
   mergeCanvases();
 }
 
+/**
+ * remove nose from canvas
+ */
 function removeNose() {
   const canvas = document.getElementById("noseCanvas");
   const ctx = canvas.getContext("2d");
@@ -120,6 +124,9 @@ function removeNose() {
   mergeCanvases();
 }
 
+/**
+ * remove mouth from canvas
+ */
 function removeMouth() {
   const canvas = document.getElementById("mouthCanvas");
   const ctx = canvas.getContext("2d");
