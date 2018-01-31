@@ -67,7 +67,7 @@ body {
 }
 .headElementActive, .eyesElementActive, .mouthElementActive, .noseElementActive {
   cursor: pointer;
-  background-color: #222;
+  background-color: #fff;
 }
 
 button {

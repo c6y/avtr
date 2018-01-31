@@ -24,14 +24,7 @@ function addHead() {
       mergeCanvases();
       isHead = headFile;
     }
-    // remove active class from other active element
-    const elements = document.getElementsByClassName('headElementActive');
-    const requiredElement = elements[0];
-    if(requiredElement) {
-      requiredElement.setAttribute("class", "headElement");
-    }
-    // set active class
-    event.target.setAttribute("class", "headElementActive");
+    setActiveClass('headElement', 'headElementActive');
   } else {
     // remove head if same head is on canvas
     const canvas = document.getElementById("headCanvas");
@@ -49,18 +42,53 @@ function addHead() {
 function addEyes() {
   const img = new Image();
   img.src = event.target.src;
-  headFile = img.src;
-  img.onload = function() {
+  eyesFile = img.src;
+  if (isEyes != eyesFile) {
+    // draw eyes if there's no or different eyes
+    img.onload = function() {
+      const canvas = document.getElementById("eyesCanvas");
+      const ctx = canvas.getContext("2d");
+      ctx.mozImageSmoothingEnabled = false;
+      ctx.msImageSmoothingEnabled = false;
+      ctx.imageSmoothingEnabled = false;
+      ctx.clearRect(0, 0, avatarW, avatarH);
+      ctx.drawImage(img, 0, offsetV, avatarW, avatarH);
+      mergeCanvases();
+      isEyes = eyesFile;
+    }
+    setActiveClass('eyesElement', 'eyesElementActive');
+  } else {
+    // remove eyes if same eyes is on canvas
     const canvas = document.getElementById("eyesCanvas");
     const ctx = canvas.getContext("2d");
-    ctx.mozImageSmoothingEnabled = false;
-    ctx.msImageSmoothingEnabled = false;
-    ctx.imageSmoothingEnabled = false;
     ctx.clearRect(0, 0, avatarW, avatarH);
-    ctx.drawImage(img, 0, offsetV, avatarW, avatarH);
     mergeCanvases();
+    isEyes = null;
+    event.target.setAttribute("class", "eyesElement");
   }
 }
+
+
+
+
+// /**
+//  * add eyes to eyes canvas, remove previous eyes
+//  */
+// function addEyes() {
+//   const img = new Image();
+//   img.src = event.target.src;
+//   headFile = img.src;
+//   img.onload = function() {
+//     const canvas = document.getElementById("eyesCanvas");
+//     const ctx = canvas.getContext("2d");
+//     ctx.mozImageSmoothingEnabled = false;
+//     ctx.msImageSmoothingEnabled = false;
+//     ctx.imageSmoothingEnabled = false;
+//     ctx.clearRect(0, 0, avatarW, avatarH);
+//     ctx.drawImage(img, 0, offsetV, avatarW, avatarH);
+//     mergeCanvases();
+//   }
+// }
 
 /**
  * add nose to nose canvas, remove previous nose
@@ -168,4 +196,18 @@ function removeMouth() {
   const ctx = canvas.getContext("2d");
   ctx.clearRect(0, 0, avatarW, avatarH);
   mergeCanvases();
+}
+
+/**
+ * set active class and remove it from previous element
+ */
+function setActiveClass(inactiveClass, activeClass) {
+  // remove active class from other active element
+  const elements = document.getElementsByClassName(activeClass);
+  const requiredElement = elements[0];
+  if(requiredElement) {
+    requiredElement.setAttribute("class", inactiveClass);
+  }
+  // set active class
+  event.target.setAttribute("class", activeClass);
 }
