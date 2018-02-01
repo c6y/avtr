@@ -1,6 +1,6 @@
 const avatarW = 512; // avatar width
 const avatarH = 512; // avatar height
-const offsetV = -16;
+const offsetV = -8;
 
 let isHead = null;
 let isEyes = null;
