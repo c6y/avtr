@@ -50,7 +50,7 @@ body {
 }
 
 #library {
-  margin: 32px 8px;
+  margin: 32px 0px;
   z-index: 100;
 }
 
@@ -81,7 +81,6 @@ button {
 }
 
 .copyright {
-  /* margin-top: 8px; */
   color: #d9d9d9;
   font-size: 1em;
 }
