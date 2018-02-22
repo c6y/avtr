@@ -11,22 +11,20 @@
 <body>
 
   <div id="viewport">
-    <canvas id="backCanvas" width="512" height="512">
+    <canvas id="backCanvas" width="720" height="720">
     </canvas>
-    <canvas id="headCanvas" width="512" height="512">
+    <canvas id="headCanvas" width="720" height="720">
     </canvas>
-    <canvas id="eyesCanvas" width="512" height="512">
+    <canvas id="eyesCanvas" width="720" height="720">
     </canvas>
-    <canvas id="mouthCanvas" width="512" height="512">
+    <canvas id="mouthCanvas" width="720" height="720">
     </canvas>
-    <canvas id="noseCanvas" width="512" height="512">
-    </canvas>
-    <canvas id="mergedCanvas" width="512" height="512">
+    <canvas id="mergedCanvas" width="720" height="720">
     </canvas>
   </div>
 
   <div id="library">
-    <div class="heads">
+    <!-- <div class="heads">
       <span class="headLib">
         <img src="media/head/head-001.svg" onclick="addHead()" class="headElement">
       </span>
@@ -51,83 +49,63 @@
       <span class="headLib">
         <img src="media/head/head-008.svg" onclick="addHead()" class="headElement">
       </span>
-    </div>
+    </div> -->
     <div class="eyes">
       <span class="eyesLib">
-        <img src="media/eyes/eyes-001.png" onclick="addEyes()" class="eyesElement">
+        <img src="media/eyes/e-001.png" onclick="addEyes()" class="eyesElement">
       </span>
       <span class="eyesLib">
-        <img src="media/eyes/eyes-002.png" onclick="addEyes()" class="eyesElement">
+        <img src="media/eyes/e-002.png" onclick="addEyes()" class="eyesElement">
       </span>
       <span class="eyesLib">
-        <img src="media/eyes/eyes-003.png" onclick="addEyes()" class="eyesElement">
+        <img src="media/eyes/e-003.png" onclick="addEyes()" class="eyesElement">
       </span>
       <span class="eyesLib">
-        <img src="media/eyes/eyes-004.png" onclick="addEyes()" class="eyesElement">
+        <img src="media/eyes/e-004.png" onclick="addEyes()" class="eyesElement">
       </span>
       <span class="eyesLib">
-        <img src="media/eyes/eyes-005.png" onclick="addEyes()" class="eyesElement">
+        <img src="media/eyes/e-005.png" onclick="addEyes()" class="eyesElement">
       </span>
       <span class="eyesLib">
-        <img src="media/eyes/eyes-006.png" onclick="addEyes()" class="eyesElement">
+        <img src="media/eyes/e-006.png" onclick="addEyes()" class="eyesElement">
       </span>
       <span class="eyesLib">
-        <img src="media/eyes/eyes-007.png" onclick="addEyes()" class="eyesElement">
+        <img src="media/eyes/e-007.png" onclick="addEyes()" class="eyesElement">
       </span>
       <span class="eyesLib">
-        <img src="media/eyes/eyes-008.png" onclick="addEyes()" class="eyesElement">
+        <img src="media/eyes/e-008.png" onclick="addEyes()" class="eyesElement">
       </span>
-    </div>
-    <div class="noses">
-      <span class="noseLib">
-        <img src="media/nose/nose-001.png" onclick="addNose()" class="noseElement">
-      </span>
-      <span class="noseLib">
-        <img src="media/nose/nose-002.png" onclick="addNose()" class="noseElement">
-      </span>
-      <span class="noseLib">
-        <img src="media/nose/nose-003.png" onclick="addNose()" class="noseElement">
-      </span>
-      <span class="noseLib">
-        <img src="media/nose/nose-004.png" onclick="addNose()" class="noseElement">
-      </span>
-      <span class="noseLib">
-        <img src="media/nose/nose-005.png" onclick="addNose()" class="noseElement">
-      </span>
-      <span class="noseLib">
-        <img src="media/nose/nose-006.png" onclick="addNose()" class="noseElement">
-      </span>
-      <span class="noseLib">
-        <img src="media/nose/nose-007.png" onclick="addNose()" class="noseElement">
-      </span>
-      <span class="noseLib">
-        <img src="media/nose/nose-008.png" onclick="addNose()" class="noseElement">
+      <span class="eyesLib">
+        <img src="media/eyes/e-009.png" onclick="addEyes()" class="eyesElement">
       </span>
     </div>
     <div class="mouths">
       <span class="mouthLib">
-        <img src="media/mouth/mouth-001.png" onclick="addMouth()" class="mouthElement">
+        <img src="media/mouth/m-001.png" onclick="addMouth()" class="mouthElement">
       </span>
       <span class="mouthLib">
-        <img src="media/mouth/mouth-002.png" onclick="addMouth()" class="mouthElement">
+        <img src="media/mouth/m-002.png" onclick="addMouth()" class="mouthElement">
       </span>
       <span class="mouthLib">
-        <img src="media/mouth/mouth-003.png" onclick="addMouth()" class="mouthElement">
+        <img src="media/mouth/m-003.png" onclick="addMouth()" class="mouthElement">
       </span>
       <span class="mouthLib">
-        <img src="media/mouth/mouth-004.png" onclick="addMouth()" class="mouthElement">
+        <img src="media/mouth/m-004.png" onclick="addMouth()" class="mouthElement">
       </span>
       <span class="mouthLib">
-        <img src="media/mouth/mouth-005.png" onclick="addMouth()" class="mouthElement">
+        <img src="media/mouth/m-005.png" onclick="addMouth()" class="mouthElement">
       </span>
       <span class="mouthLib">
-        <img src="media/mouth/mouth-006.png" onclick="addMouth()" class="mouthElement">
+        <img src="media/mouth/m-006.png" onclick="addMouth()" class="mouthElement">
       </span>
       <span class="mouthLib">
-        <img src="media/mouth/mouth-007.png" onclick="addMouth()" class="mouthElement">
+        <img src="media/mouth/m-007.png" onclick="addMouth()" class="mouthElement">
       </span>
       <span class="mouthLib">
-        <img src="media/mouth/mouth-008.png" onclick="addMouth()" class="mouthElement">
+        <img src="media/mouth/m-008.png" onclick="addMouth()" class="mouthElement">
+      </span>
+      <span class="mouthLib">
+        <img src="media/mouth/m-009.png" onclick="addMouth()" class="mouthElement">
       </span>
     </div>
   </div>
