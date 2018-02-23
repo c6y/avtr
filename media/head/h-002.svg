@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- square shaped head, on neck -->
+<svg height="72px" width="72px" viewBox="0 0 72 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <rect x="4" y="4" width="64" height="64" style="fill:#3fbc57;" />
+  <rect x="24" y="68" width="24" height="4" style="fill:#3fbc57;" />
+</svg>

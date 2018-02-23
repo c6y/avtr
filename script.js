@@ -1,6 +1,6 @@
 const avatarW = 720; // avatar width
 const avatarH = 720; // avatar height
-const offsetV = -8;
+const offsetV = 0;
 
 let isHead = null;
 let isEyes = null;
@@ -112,7 +112,7 @@ function mergeCanvases(){
   const ctx = canvas.getContext('2d');
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = '#ffda06';
+  ctx.fillStyle = '#eee';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   ctx.drawImage(headC, 0, 0);
   ctx.drawImage(eyesC, 0, 0);
