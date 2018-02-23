@@ -1,6 +1,9 @@
+const boxW = 800; // avatar width
+const boxH = 800; // avatar height
 const avatarW = 720; // avatar width
 const avatarH = 720; // avatar height
-const offsetV = 0;
+const eyesOffsetX = 40;
+const eyesOffsetY = 40;
 
 let isHead = null;
 let isEyes = null;
@@ -19,8 +22,8 @@ function addHead() {
     img.onload = function() {
       const canvas = document.getElementById("headCanvas");
       const ctx = canvas.getContext("2d");
-      ctx.clearRect(0, 0, avatarW, avatarH);
-      ctx.drawImage(img, 0, 0, avatarW, avatarH);
+      ctx.clearRect(0, 0, boxW, boxH);
+      ctx.drawImage(img, 0, 0, boxW, boxH);
       mergeCanvases();
       isHead = headFile;
     }
@@ -29,7 +32,7 @@ function addHead() {
     // remove head if same head is on canvas
     const canvas = document.getElementById("headCanvas");
     const ctx = canvas.getContext("2d");
-    ctx.clearRect(0, 0, avatarW, avatarH);
+    ctx.clearRect(0, 0, boxW, boxH);
     mergeCanvases();
     isHead = null;
     event.target.setAttribute("class", "headElement");
@@ -51,8 +54,8 @@ function addEyes() {
       ctx.mozImageSmoothingEnabled = false;
       ctx.msImageSmoothingEnabled = false;
       ctx.imageSmoothingEnabled = false;
-      ctx.clearRect(0, 0, avatarW, avatarH);
-      ctx.drawImage(img, 0, offsetV, avatarW, avatarH);
+      ctx.clearRect(0, 0, boxW, boxH);
+      ctx.drawImage(img, eyesOffsetX, eyesOffsetY, avatarW, avatarH);
       mergeCanvases();
       isEyes = eyesFile;
     }
@@ -83,8 +86,8 @@ function addMouth() {
       ctx.mozImageSmoothingEnabled = false;
       ctx.msImageSmoothingEnabled = false;
       ctx.imageSmoothingEnabled = false;
-      ctx.clearRect(0, 0, avatarW, avatarH);
-      ctx.drawImage(img, 0, offsetV, avatarW, avatarH);
+      ctx.clearRect(0, 0, boxW, boxH);
+      ctx.drawImage(img, eyesOffsetX, eyesOffsetY, avatarW, avatarH);
       mergeCanvases();
       isMouth = mouthFile;
     }
@@ -112,7 +115,7 @@ function mergeCanvases(){
   const ctx = canvas.getContext('2d');
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = '#eee';
+  ctx.fillStyle = '#fff';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   ctx.drawImage(headC, 0, 0);
   ctx.drawImage(eyesC, 0, 0);
@@ -135,7 +138,7 @@ function download(){
 function removeHead() {
   const canvas = document.getElementById("headCanvas");
   const ctx = canvas.getContext("2d");
-  ctx.clearRect(0, 0, avatarW, avatarH);
+  ctx.clearRect(0, 0, boxW, boxH);
   mergeCanvases();
   event.target.setAttribute("class", "headElement");
 }
@@ -146,7 +149,7 @@ function removeHead() {
 function removeEyes() {
   const canvas = document.getElementById("eyesCanvas");
   const ctx = canvas.getContext("2d");
-  ctx.clearRect(0, 0, avatarW, avatarH);
+  ctx.clearRect(0, 0, boxW, boxH);
   mergeCanvases();
 }
 
@@ -156,7 +159,7 @@ function removeEyes() {
 function removeMouth() {
   const canvas = document.getElementById("mouthCanvas");
   const ctx = canvas.getContext("2d");
-  ctx.clearRect(0, 0, avatarW, avatarH);
+  ctx.clearRect(0, 0, boxW, boxH);
   mergeCanvases();
 }
 

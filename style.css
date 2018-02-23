@@ -12,8 +12,11 @@ body {
   padding: 0;
   margin: 0;
   position: relative;
-  width: 360px;
-  height: 360px;
+  width: 400px;
+  height: 400px;
+  /* background-image: url(media/20x20-grid.png); */
+  background-size: cover;
+  image-rendering: pixelated;
 }
 
 #backCanvas, #headCanvas, #eyesCanvas, #mouthCanvas, #noseCanvas {
@@ -45,8 +48,8 @@ body {
 }
 
 #mergedCanvas {
-  width: 360px;
-  height: 360px;
+  width: 400px;
+  height: 400px;
 }
 
 #library {
@@ -64,14 +67,14 @@ body {
 .headElement, .eyesElement, .mouthElement, .noseElement {
   cursor: pointer;
   background-color: #eaeaea;
-  width: 90px;
-  height: 90px;
+  width: 60px;
+  height: 60px;
 }
 .headElementActive, .eyesElementActive, .mouthElementActive, .noseElementActive {
   cursor: pointer;
-  background-color: white;
-  width: 90px;
-  height: 90px;
+  background-color: #fff;
+  width: 60px;
+  height: 60px;
 }
 
 button {
