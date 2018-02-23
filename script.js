@@ -1,13 +1,13 @@
-const boxW = 800; // avatar width
-const boxH = 800; // avatar height
-const avatarW = 720; // avatar width
-const avatarH = 720; // avatar height
-const eyesOffsetX = 40;
-const eyesOffsetY = 40;
+const boxW = 800; // full box width
+const boxH = 800; // full box height
+const avatarW = 720; // avatar's face width
+const avatarH = 720; // avatar's face height
+const faceOffsetX = 40; // avatar's face offset
+const faceOffsetY = 40; // avatar's face offset
 
+//  keep track if features are set
 let isHead = null;
 let isEyes = null;
-let isNose = null;
 let isMouth = null;
 
 /**
@@ -55,7 +55,7 @@ function addEyes() {
       ctx.msImageSmoothingEnabled = false;
       ctx.imageSmoothingEnabled = false;
       ctx.clearRect(0, 0, boxW, boxH);
-      ctx.drawImage(img, eyesOffsetX, eyesOffsetY, avatarW, avatarH);
+      ctx.drawImage(img, faceOffsetX, faceOffsetY, avatarW, avatarH);
       mergeCanvases();
       isEyes = eyesFile;
     }
@@ -64,7 +64,7 @@ function addEyes() {
     // remove eyes if same eyes is on canvas
     const canvas = document.getElementById("eyesCanvas");
     const ctx = canvas.getContext("2d");
-    ctx.clearRect(0, 0, avatarW, avatarH);
+    ctx.clearRect(0, 0, boxW, boxH);
     mergeCanvases();
     isEyes = null;
     event.target.setAttribute("class", "eyesElement");
@@ -87,7 +87,7 @@ function addMouth() {
       ctx.msImageSmoothingEnabled = false;
       ctx.imageSmoothingEnabled = false;
       ctx.clearRect(0, 0, boxW, boxH);
-      ctx.drawImage(img, eyesOffsetX, eyesOffsetY, avatarW, avatarH);
+      ctx.drawImage(img, faceOffsetX, faceOffsetY, avatarW, avatarH);
       mergeCanvases();
       isMouth = mouthFile;
     }
