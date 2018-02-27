@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- quad-circle shaped head, on neck -->
 <svg height="64px" width="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <!-- neck -->
-  <polygon points="32,32 42,64 22,64" style="fill:#23D6C9;" />
-  <!-- head -->
-  <circle cx="20" cy="20" r="15" style="fill:#F8AA8F;" />
-  <circle cx="44" cy="20" r="15" style="fill:#F8AA8F;" />
-  <circle cx="20" cy="44" r="15" style="fill:#F8AA8F;" />
-  <circle cx="44" cy="44" r="15" style="fill:#F8AA8F;" />
-  <rect x="22" y="22" width="20" height="20" style="fill:#F8AA8F;" />
+  <style>
+    .neck {fill: #23D6C9;}
+    .head {fill: #F8AA8F;}
+  </style>
+  <polygon points="32,32 42,64 22,64" class="neck" />
+  <circle cx="20" cy="20" r="15" class="head" />
+  <circle cx="44" cy="20" r="15" class="head" />
+  <circle cx="20" cy="44" r="15" class="head" />
+  <circle cx="44" cy="44" r="15" class="head" />
+  <rect x="22" y="22" width="20" height="20" class="head" />
 </svg>

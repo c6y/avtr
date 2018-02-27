@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- double-ellipse shaped head, on neck -->
 <svg height="64px" width="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <!-- neck -->
-  <polygon points="32,32 42,64 22,64" style="fill:#ffdd00;" />
-  <!-- head -->
-  <ellipse cx="32" cy="21" rx="25" ry="18" style="fill:#F8AA8F;" />
-  <ellipse cx="32" cy="43" rx="25" ry="18" style="fill:#F8AA8F;" />
+  <style>
+    .neck {fill: #FFDD00;}
+    .head {fill: #F8AA8F;}
+  </style>
+  <polygon points="32,32 42,64 22,64" class="neck" />
+  <ellipse cx="32" cy="21" rx="25" ry="18" class="head" />
+  <ellipse cx="32" cy="43" rx="25" ry="18" class="head" />
 </svg>

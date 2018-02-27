@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- circle shaped head, on neck -->
 <svg height="64px" width="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <!-- neck -->
-  <polygon points="32,32 42,64 22,64" style="fill:#33BB55;" />
-  <!-- head -->
-  <circle cx="32" cy="32" r="27" style="fill:#F8AA8F;" />
+  <style>
+    .neck {fill: #33BB55;}
+    .head {fill: #F8AA8F;}
+  </style>
+  <polygon points="32,32 42,64 22,64" class="neck" />
+  <circle cx="32" cy="32" r="27" class="head" />
 </svg>
