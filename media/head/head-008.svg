@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- double-tilted-square shaped head -->
 <svg height="64px" width="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <style>
-    .head {fill: #F8AA8F;}
-  </style>
   <rect x="10" y="10" width="44" height="44" class="head" transform = "rotate(22.5 32 32)"/>
   <rect x="10" y="10" width="44" height="44" class="head" transform = "rotate(-22.5 32 32)"/>
 </svg>

@@ -1,5 +1,5 @@
 body {
-  background-color: #eee;
+  background-color: #aaa;
   text-align: center;
   margin: 16px;
 }
@@ -63,7 +63,7 @@ body {
 
 .headElement, .eyesElement, .mouthElement, .noseElement {
   cursor: pointer;
-  background-color: #eaeaea;
+  background-color: #bbb;
 }
 .headElementActive, .eyesElementActive, .mouthElementActive, .noseElementActive {
   cursor: pointer;
