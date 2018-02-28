@@ -7,33 +7,59 @@ let isEyes = null;
 let isNose = null;
 let isMouth = null;
 
+let neckImages = new Array();
+
+/**
+ * preload neck images into array
+ */
+function preloadimages() {
+  for (i = 0; i < preloadimages.arguments.length; i++){
+    neckImages[i] = new Image();
+    neckImages[i].src = preloadimages.arguments[i];
+  }
+}
+
+// preload neck shape images
+preloadimages(
+  "/media/neck/neck-001.svg",
+  "/media/neck/neck-002.svg",
+  "/media/neck/neck-003.svg",
+  "/media/neck/neck-004.svg",
+  "/media/neck/neck-005.svg",
+  "/media/neck/neck-006.svg",
+  "/media/neck/neck-007.svg",
+  "/media/neck/neck-008.svg"
+);
+
 /**
  * add head to head canvas, remove previous head
  */
 function addHead() {
+  const randomE = Math.floor(Math.random() * 8);
+
+  // select random neck
+  let imgNeck = new Image();
+  imgNeck.src = neckImages[randomE].src;
+
+  // get head shape that is clicked on
   const img = new Image();
   img.src = event.target.src;
+
   headFile = img.src;
-  if (isHead != headFile) {
+
+  // if (isHead != headFile) {
     // draw head if there's no or different head
     img.onload = function() {
       const canvas = document.getElementById("headCanvas");
       const ctx = canvas.getContext("2d");
       ctx.clearRect(0, 0, avatarW, avatarH);
+      ctx.drawImage(imgNeck, 0, 0, avatarW, avatarH);
       ctx.drawImage(img, 0, 0, avatarW, avatarH);
       mergeCanvases();
       isHead = headFile;
     }
     setActiveClass('headElement', 'headElementActive');
-  } else {
-    // remove head if same head is on canvas
-    const canvas = document.getElementById("headCanvas");
-    const ctx = canvas.getContext("2d");
-    ctx.clearRect(0, 0, avatarW, avatarH);
-    mergeCanvases();
-    isHead = null;
-    event.target.setAttribute("class", "headElement");
-  }
+  // }
 }
 
 /**
