@@ -1,7 +1,7 @@
 body {
   background-color: #aaa;
   text-align: center;
-  margin: 16px;
+  margin: 32px;
 }
 
 #viewport {
@@ -10,7 +10,7 @@ body {
   vertical-align: top;
   line-height: 0;
   padding: 0;
-  margin: 0;
+  margin: 0 0 32px 0;
   position: relative;
   width: 256px;
   height: 256px;
@@ -50,15 +50,24 @@ body {
 }
 
 #library {
-  margin: 32px 0px;
   z-index: 100;
+  width: 512px;
+  /* background-color: black; */
+  margin: auto;
 }
 
 #library img {
   image-rendering: pixelated;
 }
-
-.noseLib, .headLib, .mouthLib, .eyesLib {
+.heads, .eyes, .noses, .mouths {
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: center; */
+  margin-bottom: 4px;
+}
+.headLib, .eyesLib, .noseLib, .mouthLib {
+  line-height: 0;
+  background-color: red;
 }
 
 .headElement, .eyesElement, .mouthElement, .noseElement {

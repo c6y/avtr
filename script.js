@@ -46,7 +46,7 @@ const colorSetA = [
   '#B156C4',
   '#23D6C9',
   '#FF0088',
-  '#BBEE33'
+  '#ff8c00'
 ];
 // const colorsSkin = [
 //   '#F8AA8F',
