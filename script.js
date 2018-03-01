@@ -43,36 +43,23 @@ preloadimages(
 const colorSetA = [
   '#4088EE',
   '#33BB55',
+  '#A3866A',
   '#FF3333',
   '#FFDD00',
+  '#F8AA8F',
   '#B156C4',
   '#23D6C9',
+  '#704139',
   '#FF0088',
-  '#ff8c00'
+  '#ff8c00',
+  '#c99789'
 ];
-// const colorsSkin = [
-//   '#F8AA8F',
-//   '#e0a899',
-//   '#c99789'
-// ];
 
 /**
  * add head to head canvas, remove previous head
  */
 function addHead() {
   const colorSetACount = colorSetA.length;
-  let newColorIndex = Math.floor(Math.random() * colorSetACount);
-
-  // if the new index is equal to current index add 1
-  if (newColorIndex === colorIndex) {
-    newColorIndex++;
-    // set index back to 0 if above count
-    if (newColorIndex > colorSetACount) {
-      newColorIndex = 0;
-    }
-  }
-
-  colorIndex = newColorIndex;
 
   // get head shape that is clicked on
   const img = new Image();
@@ -93,7 +80,8 @@ function addHead() {
 
     // color head
     ctx.globalCompositeOperation = "source-atop";
-    const newColor = colorSetA[newColorIndex];
+    console.log('colorIndex: ' + colorIndex);
+    const newColor = colorSetA[colorIndex];
     ctx.fillStyle = newColor;
     ctx.fillRect(0, 0, avatarW, avatarH);
 
@@ -102,6 +90,13 @@ function addHead() {
     ctx.drawImage(imgNeck, 0, 0, avatarW, avatarH);
 
     mergeCanvases();
+
+    // set next color
+    colorIndex++;
+    // set index back to 0 if above count
+    if (colorIndex >= colorSetACount) {
+      colorIndex = 0;
+    }
   };
   setActiveClass('headElement', 'headElementActive');
 }
