@@ -8,6 +8,8 @@ let isEyes = null;
 let isNose = null;
 let isMouth = null;
 
+let colorIndex = 0;
+
 let pImages = [];
 
 // to preload the images, get current directory's path
@@ -59,7 +61,18 @@ const colorSetA = [
  */
 function addHead() {
   const colorSetACount = colorSetA.length;
-  const randomColorA = Math.floor(Math.random() * colorSetACount);
+  let newColorIndex = Math.floor(Math.random() * colorSetACount);
+
+  // if the new index is equal to current index add 1
+  if (newColorIndex === colorIndex) {
+    newColorIndex++;
+    // set index back to 0 if above count
+    if (newColorIndex > colorSetACount) {
+      newColorIndex = 0;
+    }
+  }
+
+  colorIndex = newColorIndex;
 
   // get head shape that is clicked on
   const img = new Image();
@@ -80,7 +93,8 @@ function addHead() {
 
     // color head
     ctx.globalCompositeOperation = "source-atop";
-    ctx.fillStyle = colorSetA[randomColorA];
+    const newColor = colorSetA[newColorIndex];
+    ctx.fillStyle = newColor;
     ctx.fillRect(0, 0, avatarW, avatarH);
 
     // draw neck
