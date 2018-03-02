@@ -2,7 +2,6 @@
 
 const avatarW = 512; // avatar width
 const avatarH = 512; // avatar height
-const offsetV = -8;
 
 let isEyes = null;
 let isNose = null;
@@ -49,7 +48,7 @@ const colorSetA = [
   '#F8AA8F',
   '#B156C4',
   '#23D6C9',
-  '#704139',
+  '#58423e',
   '#FF0088',
   '#ff8c00',
   '#c99789'
@@ -125,7 +124,7 @@ function addEyes() {
       ctx.msImageSmoothingEnabled = false;
       ctx.imageSmoothingEnabled = false;
       ctx.clearRect(0, 0, avatarW, avatarH);
-      ctx.drawImage(img, 0, offsetV, avatarW, avatarH);
+      ctx.drawImage(img, 0, 0, avatarW, avatarH);
       mergeCanvases();
       isEyes = eyesFile;
     };
@@ -157,7 +156,7 @@ function addNose() {
       ctx.msImageSmoothingEnabled = false;
       ctx.imageSmoothingEnabled = false;
       ctx.clearRect(0, 0, avatarW, avatarH);
-      ctx.drawImage(img, 0, offsetV, avatarW, avatarH);
+      ctx.drawImage(img, 0, 0, avatarW, avatarH);
       mergeCanvases();
       isNose = noseFile;
     };
@@ -189,7 +188,7 @@ function addMouth() {
       ctx.msImageSmoothingEnabled = false;
       ctx.imageSmoothingEnabled = false;
       ctx.clearRect(0, 0, avatarW, avatarH);
-      ctx.drawImage(img, 0, offsetV, avatarW, avatarH);
+      ctx.drawImage(img, 0, 0, avatarW, avatarH);
       mergeCanvases();
       isMouth = mouthFile;
     };

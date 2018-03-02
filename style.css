@@ -51,15 +51,18 @@ body {
 
 #library {
   z-index: 100;
-  width: 512px;
+  width: 640px;
   /* background-color: black; */
   margin: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 #library img {
   image-rendering: pixelated;
 }
 .heads, .eyes, .noses, .mouths {
+  align-self: center;
   display: flex;
   flex-wrap: wrap;
   /* justify-content: center; */
