@@ -51,7 +51,7 @@ body {
 
 #library {
   z-index: 100;
-  width: 640px;
+  width: 768px;
   /* background-color: black; */
   margin: auto;
   display: flex;
