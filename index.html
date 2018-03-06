@@ -7,6 +7,9 @@
   <title>eboy avtr</title>
   <link rel="stylesheet" type="text/css" href="style.css">
   <script src="script.js"></script>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 </head>
 <body>
 
@@ -25,8 +28,15 @@
     </canvas>
   </div>
 
+  <div id="tabs">
+    <span class="tabOn" id="shapetab" onclick="setActiveTab()">shape</span>
+    <span class="tabOff" id="eyetab" onclick="setActiveTab()">eyes</span>
+    <span class="tabOff" id="nosetab" onclick="setActiveTab()">nose</span>
+    <span class="tabOff" id="mouthtab" onclick="setActiveTab()">mouth</span>
+  </div>
+
   <div id="library">
-    <div class="heads">
+    <div id="shapes" class="showLib">
       <span class="headLib">
         <img src="media/head/head-001.svg" onclick="addHead()" class="headElement">
       </span>
@@ -52,7 +62,7 @@
         <img src="media/head/head-008.svg" onclick="addHead()" class="headElement">
       </span>
     </div>
-    <div class="eyes">
+    <div id="eyes" class="hideLib">
       <span class="eyesLib">
         <img src="media/eyes/eyes-001.png" onclick="addEyes()" class="eyesElement">
       </span>
@@ -87,7 +97,7 @@
         <img src="media/eyes/eyes-011.png" onclick="addEyes()" class="eyesElement">
       </span>
     </div>
-    <div class="noses">
+    <div id="noses" class="hideLib">
       <span class="noseLib">
         <img src="media/nose/nose-001.png" onclick="addNose()" class="noseElement">
       </span>
@@ -122,7 +132,7 @@
         <img src="media/nose/nose-011.png" onclick="addNose()" class="noseElement">
       </span>
     </div>
-    <div class="mouths">
+    <div id="mouths" class="hideLib">
       <span class="mouthLib">
         <img src="media/mouth/mouth-001.png" onclick="addMouth()" class="mouthElement">
       </span>

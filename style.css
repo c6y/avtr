@@ -2,6 +2,8 @@ body {
   background-color: #aaa;
   text-align: center;
   margin: 32px;
+  font-family: "Roboto";
+  font-size: 16px;
 }
 
 #viewport {
@@ -10,7 +12,7 @@ body {
   vertical-align: top;
   line-height: 0;
   padding: 0;
-  margin: 0 0 32px 0;
+  margin: 0 0 16px 0;
   position: relative;
   width: 256px;
   height: 256px;
@@ -49,23 +51,54 @@ body {
   height: 256px;
 }
 
+#tabs {
+  border-bottom: 1px solid black;
+  width: 256px;
+  margin: auto;
+  padding: 4px 0px 4px 0px;
+}
+
+.tabOn, .tabOff {
+  padding: 4px 6px 4px 6px;
+}
+
+.tabOn {
+  background-color: black;
+  user-select: none;
+  color: #bbb;
+}
+
+.tabOff {
+  background-color: #aaa;
+  cursor: pointer;
+  /* color: black; */
+}
+
 #library {
   z-index: 100;
-  width: 768px;
-  /* background-color: black; */
+  width: 256px;
   margin: auto;
   display: flex;
   flex-direction: column;
+
 }
 
 #library img {
   image-rendering: pixelated;
 }
-.heads, .eyes, .noses, .mouths {
-  align-self: center;
+
+.showLib {
   display: flex;
+  align-self: center;
   flex-wrap: wrap;
-  /* justify-content: center; */
+}
+
+.hideLib {
+  display: none;
+}
+
+#heads, #eyes, #noses, #mouths {
+
   margin-bottom: 4px;
 }
 .headLib, .eyesLib, .noseLib, .mouthLib {
@@ -80,6 +113,7 @@ body {
 .headElementActive, .eyesElementActive, .mouthElementActive, .noseElementActive {
   cursor: pointer;
   background-color: white;
+  /* filter: invert(100%); */
 }
 
 button {
