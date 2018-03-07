@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars*/
 
-const avatarW = 512; // avatar width
-const avatarH = 512; // avatar height
+const avatarW = 1024; // avatar width
+const avatarH = 1024; // avatar height
 
 let isEyes = null;
 let isNose = null;

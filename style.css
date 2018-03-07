@@ -1,7 +1,7 @@
 body {
   background-color: #aaa;
   text-align: center;
-  margin: 32px;
+  margin: 0px;
   font-family: "Roboto";
   font-size: 16px;
 }
@@ -14,8 +14,8 @@ body {
   padding: 0;
   margin: 0 0 16px 0;
   position: relative;
-  width: 256px;
-  height: 256px;
+  width: 512px;
+  height: 512px;
 }
 
 #backCanvas, #headCanvas, #eyesCanvas, #mouthCanvas, #noseCanvas {
@@ -47,19 +47,19 @@ body {
 }
 
 #mergedCanvas {
-  width: 256px;
-  height: 256px;
+  width: 512px;
+  height: 512px;
 }
 
 #tabs {
   border-bottom: 1px solid black;
-  width: 256px;
+  width: 512px;
   margin: auto;
   padding: 4px 0px 4px 0px;
 }
 
 .tabOn, .tabOff {
-  padding: 4px 6px 4px 6px;
+  padding: 4px 12px 4px 12px;
 }
 
 .tabOn {
@@ -76,7 +76,7 @@ body {
 
 #library {
   z-index: 100;
-  width: 256px;
+  width: 512px;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -121,12 +121,14 @@ button {
 }
 
 #download-box {
-  display: block;
+  width: 512px;
+  margin: auto;
   margin-top: 32px;
   margin-bottom: 8px;
 }
 
 .copyright {
-  /* color: #d9d9d9; */
   font-size: 0.75em;
+  width: 512px;
+  margin: auto;
 }
