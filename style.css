@@ -1,5 +1,5 @@
 body {
-  background-color: #aaa;
+  background-color: #fff;
   text-align: center;
   margin: 0px;
   /* font-family: "Roboto"; */
@@ -65,13 +65,12 @@ body {
 .tabOn {
   background-color: black;
   user-select: none;
-  color: #bbb;
+  color: #eee;
 }
 
 .tabOff {
-  background-color: #aaa;
+  background-color: #eee;
   cursor: pointer;
-  /* color: black; */
 }
 
 #library {
@@ -98,22 +97,31 @@ body {
 }
 
 #heads, #eyes, #noses, #mouths {
-
   margin-bottom: 4px;
 }
+
 .headLib, .eyesLib, .noseLib, .mouthLib {
   line-height: 0;
-  background-color: red;
+  /* background-color: red; */
+}
+
+.eyesLib img, .noseLib img {
+  width: 64px;
+  height: 64px;
+}
+
+.mouthLib img {
+  width: 80px;
+  height: 32px
 }
 
 .headElement, .eyesElement, .mouthElement, .noseElement {
   cursor: pointer;
-  background-color: #bbb;
+  background-color: #eee;
 }
 .headElementActive, .eyesElementActive, .mouthElementActive, .noseElementActive {
   cursor: pointer;
-  background-color: white;
-  /* filter: invert(100%); */
+  background-color: #ccc;
 }
 
 button {

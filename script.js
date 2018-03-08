@@ -2,12 +2,15 @@
 
 const avatarW = 1024; // avatar width
 const avatarH = 1024; // avatar height
+const unit = 16;
 
 let isEyes = null;
 let isNose = null;
 let isMouth = null;
 
 let colorIndex = 0;
+
+const showSafezones = false; //[dev] toggle safezones, default is false;
 
 let pImages = [];
 
@@ -36,7 +39,8 @@ preloadimages(
   '/media/head/head-005.svg',
   '/media/head/head-006.svg',
   '/media/head/head-007.svg',
-  '/media/head/head-008.svg'
+  '/media/head/head-008.svg',
+  '/media/safezones.png'
 );
 
 const colorSetA = [
@@ -64,6 +68,12 @@ function addHead() {
   const img = new Image();
   img.src = this.event.target.src;
 
+  //  [dev] load safezones image if set to true
+  if (showSafezones) {
+    const safezone = new Image();
+    safezone.src = dir + '/media/safezones.png';
+  }
+
   // get default neck shape
   const imgNeck = new Image();
   imgNeck.src = dir + '/media/neck/neck-001.svg';
@@ -83,6 +93,14 @@ function addHead() {
     const newColor = colorSetA[colorIndex];
     ctx.fillStyle = newColor;
     ctx.fillRect(0, 0, avatarW, avatarH);
+
+    // [dev] display safezones if set to true
+    if (showSafezones) {
+      ctx.imageSmoothingEnabled = false;
+      ctx.globalAlpha = 0.1;
+      ctx.drawImage(safezone, 0, 0, avatarW, avatarH);
+      ctx.globalAlpha = 1;
+    }
 
     // draw neck
     ctx.globalCompositeOperation = 'destination-over';
@@ -124,7 +142,15 @@ function addEyes() {
       ctx.msImageSmoothingEnabled = false;
       ctx.imageSmoothingEnabled = false;
       ctx.clearRect(0, 0, avatarW, avatarH);
-      ctx.drawImage(img, 0, 0, avatarW, avatarH);
+      // draw left eye
+      ctx.drawImage(img, 3 * unit, 8 * unit, 32 * unit, 32 * unit);
+      // mirror eye
+      ctx.save();
+      ctx.translate(64 * unit, 0);
+      ctx.scale(-1, 1);
+      ctx.drawImage(img, 3 * unit, 8 * unit, 32 * unit, 32 * unit);
+      ctx.restore();
+
       mergeCanvases();
       isEyes = eyesFile;
     };
@@ -156,7 +182,8 @@ function addNose() {
       ctx.msImageSmoothingEnabled = false;
       ctx.imageSmoothingEnabled = false;
       ctx.clearRect(0, 0, avatarW, avatarH);
-      ctx.drawImage(img, 0, 0, avatarW, avatarH);
+      ctx.drawImage(img, 16 * unit, 9 * unit, 32 * unit, 32 * unit);
+
       mergeCanvases();
       isNose = noseFile;
     };
@@ -188,7 +215,8 @@ function addMouth() {
       ctx.msImageSmoothingEnabled = false;
       ctx.imageSmoothingEnabled = false;
       ctx.clearRect(0, 0, avatarW, avatarH);
-      ctx.drawImage(img, 0, 0, avatarW, avatarH);
+      ctx.drawImage(img, 12 * unit, 39 * unit, 40 * unit, 16 * unit);
+
       mergeCanvases();
       isMouth = mouthFile;
     };
