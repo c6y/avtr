@@ -105,7 +105,12 @@ body {
   /* background-color: red; */
 }
 
-.eyesLib img, .noseLib img {
+.eyesElement img {
+  /* width: 50%; */
+  /* height: 64px; */
+}
+
+.noseLib img {
   width: 64px;
   height: 64px;
 }
@@ -118,10 +123,15 @@ body {
 .headElement, .eyesElement, .mouthElement, .noseElement {
   cursor: pointer;
   background-color: #eee;
+  width: 64px;
+  height: 64px;
+  display: inline-block;
 }
 .headElementActive, .eyesElementActive, .mouthElementActive, .noseElementActive {
   cursor: pointer;
   background-color: #ccc;
+  width: 64px;
+  height: 64px;
 }
 
 button {

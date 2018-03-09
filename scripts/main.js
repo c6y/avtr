@@ -10,7 +10,7 @@ let isMouth = null;
 
 let colorIndex = 0;
 
-const showSafezones = false; //[dev] toggle safezones, default is false;
+const showSafezones = true; //[dev] toggle safezones, default is false;
 
 let pImages = [];
 
@@ -43,20 +43,18 @@ preloadimages(
   '/media/safezones.png'
 );
 
-const colorSetA = [
-  '#4088EE',
-  '#33BB55',
-  '#A3866A',
-  '#FF3333',
-  '#FFDD00',
-  '#F8AA8F',
-  '#B156C4',
-  '#23D6C9',
-  '#58423e',
-  '#FF0088',
-  '#ff8c00',
-  '#c99789'
-];
+
+// render eyes library thumbnails to html
+const eyesCount = eyes.length;
+let imgElement = '';
+let i;
+for (i = 0; i < eyesCount; i++) {
+  imgElement += "<span class=\"eyesElement\"><img class=\"eyesElement\" alt=\"" + i + "\" onclick=\"addEyes()\" src=\"media/eyes/" + eyes[i].filename + "\" /></span>";
+}
+
+window.onload = (function() {
+  document.getElementById('eyesLib').innerHTML = imgElement;
+});
 
 /**
  * add head to head canvas, remove previous head
@@ -69,10 +67,10 @@ function addHead() {
   img.src = this.event.target.src;
 
   //  [dev] load safezones image if set to true
-  if (showSafezones) {
+  // if (showSafezones) {
     const safezone = new Image();
     safezone.src = dir + '/media/safezones.png';
-  }
+  // }
 
   // get default neck shape
   const imgNeck = new Image();
@@ -123,8 +121,20 @@ function addHead() {
  */
 function addEyes() {
   const img = new Image();
+
   img.src = this.event.target.src;
+  const eyeNumber = this.event.target.alt;
+  console.log('eyeNumber: ' + eyeNumber);
+
+
+  // img.src = 'media/eyes/' + eyes[0].filename;
+  const iX = eyes[eyeNumber].x;
+  const iY = eyes[eyeNumber].y;
+  const iW = eyes[eyeNumber].w;
+  const iH = eyes[eyeNumber].h;
+
   const eyesFile = img.src;
+
   if (isEyes === eyesFile) {
     // remove eyes if same eyes is on canvas
     const canvas = document.getElementById('eyesCanvas');
@@ -142,13 +152,13 @@ function addEyes() {
       ctx.msImageSmoothingEnabled = false;
       ctx.imageSmoothingEnabled = false;
       ctx.clearRect(0, 0, avatarW, avatarH);
-      // draw left eye
-      ctx.drawImage(img, 3 * unit, 8 * unit, 32 * unit, 32 * unit);
-      // mirror eye
+      // draw first (left) eye
+      ctx.drawImage(img, iX * unit, iY * unit, iW * unit, iH * unit);
+      // mirror and draw second (right) eye
       ctx.save();
       ctx.translate(64 * unit, 0);
       ctx.scale(-1, 1);
-      ctx.drawImage(img, 3 * unit, 8 * unit, 32 * unit, 32 * unit);
+      ctx.drawImage(img, iX * unit, iY * unit, iW * unit, iH * unit);
       ctx.restore();
 
       mergeCanvases();
