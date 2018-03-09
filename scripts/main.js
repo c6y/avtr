@@ -10,7 +10,7 @@ let isMouth = null;
 
 let colorIndex = 0;
 
-const showSafezones = true; //[dev] toggle safezones, default is false;
+const showSafezones = true; // [dev] toggle safezones, default is false;
 
 let pImages = [];
 
@@ -43,18 +43,22 @@ preloadimages(
   '/media/safezones.png'
 );
 
-
-// render eyes library thumbnails to html
+// render eyes library thumbnails to html thumbs
 const eyesCount = eyes.length;
 let imgElement = '';
 let i;
 for (i = 0; i < eyesCount; i++) {
-  imgElement += "<span class=\"eyesElement\"><img class=\"eyesElement\" alt=\"" + i + "\" onclick=\"addEyes()\" src=\"media/eyes/" + eyes[i].filename + "\" /></span>";
+  imgElement +=
+    '<span class="eyesElement"><img class="eyesElement" alt="' +
+    i +
+    '" onclick="addEyes()" src="media/eyes/' +
+    eyes[i].filename +
+    '" /></span>';
 }
 
-window.onload = (function() {
+window.onload = function() {
   document.getElementById('eyesLib').innerHTML = imgElement;
-});
+};
 
 /**
  * add head to head canvas, remove previous head
@@ -68,8 +72,8 @@ function addHead() {
 
   //  [dev] load safezones image if set to true
   // if (showSafezones) {
-    const safezone = new Image();
-    safezone.src = dir + '/media/safezones.png';
+  const safezone = new Image();
+  safezone.src = dir + '/media/safezones.png';
   // }
 
   // get default neck shape
@@ -125,7 +129,6 @@ function addEyes() {
   img.src = this.event.target.src;
   const eyeNumber = this.event.target.alt;
   console.log('eyeNumber: ' + eyeNumber);
-
 
   // img.src = 'media/eyes/' + eyes[0].filename;
   const iX = eyes[eyeNumber].x;

@@ -1,29 +1,32 @@
 body {
   background-color: #fff;
-  text-align: center;
-  margin: 0px;
-  /* font-family: "Roboto"; */
   font-size: 16px;
+  margin: 0;
+  text-align: center;
 }
 
 #viewport {
   background-color: white;
   display: inline-block;
-  vertical-align: top;
-  line-height: 0;
-  padding: 0;
-  margin: 0 0 16px 0;
-  position: relative;
-  width: 512px;
   height: 512px;
+  line-height: 0;
+  margin: 0 0 16px 0;
+  padding: 0;
+  position: relative;
+  vertical-align: top;
+  width: 512px;
 }
 
-#backCanvas, #headCanvas, #eyesCanvas, #mouthCanvas, #noseCanvas {
-  left: 0;
-  top: 0;
-  image-rendering: pixelated;
-  position: absolute;
+#backCanvas,
+#headCanvas,
+#eyesCanvas,
+#mouthCanvas,
+#noseCanvas {
   display: none;
+  image-rendering: pixelated;
+  left: 0;
+  position: absolute;
+  top: 0;
 }
 
 #backCanvas {
@@ -47,25 +50,26 @@ body {
 }
 
 #mergedCanvas {
-  width: 512px;
   height: 512px;
+  width: 512px;
 }
 
 #tabs {
   border-bottom: 1px solid black;
-  width: 512px;
   margin: auto;
-  padding: 4px 0px 4px 0px;
+  padding: 4px 0 4px 0;
+  width: 512px;
 }
 
-.tabOn, .tabOff {
+.tabOn,
+.tabOff {
   padding: 4px 12px 4px 12px;
 }
 
 .tabOn {
   background-color: black;
-  user-select: none;
   color: #eee;
+  user-select: none;
 }
 
 .tabOff {
@@ -74,12 +78,21 @@ body {
 }
 
 #library {
-  z-index: 100;
-  width: 512px;
-  margin: auto;
   display: flex;
   flex-direction: column;
+  margin: auto;
+  width: 512px;
+  z-index: 100;
+}
 
+.mouthLib img {
+  height: 32px;
+  width: 80px;
+}
+
+.noseLib img {
+  height: 64px;
+  width: 64px;
 }
 
 #library img {
@@ -87,8 +100,8 @@ body {
 }
 
 .showLib {
-  display: flex;
   align-self: center;
+  display: flex;
   flex-wrap: wrap;
 }
 
@@ -96,42 +109,39 @@ body {
   display: none;
 }
 
-#heads, #eyes, #noses, #mouths {
+#heads,
+#eyes,
+#noses,
+#mouths {
   margin-bottom: 4px;
 }
 
-.headLib, .eyesLib, .noseLib, .mouthLib {
+.headLib,
+.eyesLib,
+.noseLib,
+.mouthLib {
   line-height: 0;
-  /* background-color: red; */
 }
 
-.eyesElement img {
-  /* width: 50%; */
-  /* height: 64px; */
-}
-
-.noseLib img {
-  width: 64px;
-  height: 64px;
-}
-
-.mouthLib img {
-  width: 80px;
-  height: 32px
-}
-
-.headElement, .eyesElement, .mouthElement, .noseElement {
-  cursor: pointer;
+.headElement,
+.eyesElement,
+.mouthElement,
+.noseElement {
   background-color: #eee;
-  width: 64px;
-  height: 64px;
-  display: inline-block;
-}
-.headElementActive, .eyesElementActive, .mouthElementActive, .noseElementActive {
   cursor: pointer;
-  background-color: #ccc;
-  width: 64px;
+  display: inline-block;
   height: 64px;
+  width: 64px;
+}
+
+.headElementActive,
+.eyesElementActive,
+.mouthElementActive,
+.noseElementActive {
+  background-color: #ccc;
+  cursor: pointer;
+  height: 64px;
+  width: 64px;
 }
 
 button {
@@ -139,14 +149,14 @@ button {
 }
 
 #download-box {
-  width: 512px;
   margin: auto;
-  margin-top: 32px;
   margin-bottom: 8px;
+  margin-top: 32px;
+  width: 512px;
 }
 
 .copyright {
   font-size: 0.75em;
-  width: 512px;
   margin: auto;
+  width: 512px;
 }
