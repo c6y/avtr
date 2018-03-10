@@ -29,27 +29,36 @@ body {
   top: 0;
 }
 
-#backCanvas {
-  z-index: 0;
-}
-
-#headCanvas {
+#safezone {
+  position: absolute;
   z-index: 1;
+  background-color: red;
+  image-rendering: pixelated;
+  filter: opacity(0.2);
 }
 
-#eyesCanvas {
+#backCanvas {
   z-index: 2;
 }
 
-#mouthCanvas {
+#headCanvas {
   z-index: 3;
 }
 
-#noseCanvas {
+#eyesCanvas {
   z-index: 4;
 }
 
+#mouthCanvas {
+  z-index: 5;
+}
+
+#noseCanvas {
+  z-index: 6;
+}
+
 #mergedCanvas {
+  z-index: 7;
   height: 512px;
   width: 512px;
 }

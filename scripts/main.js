@@ -69,9 +69,23 @@ for (n = 0; n < nosesCount; n++) {
     '" /></span>';
 }
 
+// render noses library thumbnails to html thumbs
+const mouthsCount = mouths.length;
+let imgElementMouth = '';
+let m;
+for (m = 0; m < mouthsCount; m++) {
+  imgElementMouth +=
+    '<span class="mouthThumbOff"><img alt="' +
+    m +
+    '" onclick="addMouth()" src="media/mouth/' +
+    mouths[m].filename +
+    '" /></span>';
+}
+
 window.onload = function() {
   document.getElementById('eyes').innerHTML = imgElementEye;
   document.getElementById('noses').innerHTML = imgElementNose;
+  document.getElementById('mouths').innerHTML = imgElementMouth;
 };
 
 /**
@@ -83,12 +97,6 @@ function addHead() {
   // get head shape that is clicked on
   const img = new Image();
   img.src = this.event.target.src;
-
-  //  [dev] load safezones image if set to true
-  // if (showSafezones) {
-  const safezone = new Image();
-  safezone.src = dir + '/media/safezones.png';
-  // }
 
   // get default neck shape
   const imgNeck = new Image();
@@ -109,14 +117,6 @@ function addHead() {
     const newColor = colors[colorIndex];
     ctx.fillStyle = newColor;
     ctx.fillRect(0, 0, avatarW, avatarH);
-
-    // [dev] display safezones if set to true
-    if (showSafezones) {
-      ctx.imageSmoothingEnabled = false;
-      ctx.globalAlpha = 0.1;
-      ctx.drawImage(safezone, 0, 0, avatarW, avatarH);
-      ctx.globalAlpha = 1;
-    }
 
     // draw neck
     ctx.globalCompositeOperation = 'destination-over';
@@ -234,7 +234,16 @@ function addNose() {
 function addMouth() {
   const img = new Image();
   img.src = this.event.target.src;
+
+  // get nose properties
+  const idx = this.event.target.alt;
+  const iX = mouths[idx].x;
+  const iY = mouths[idx].y;
+  const iW = mouths[idx].w;
+  const iH = mouths[idx].h;
+
   const mouthFile = img.src;
+
   if (isMouth === mouthFile) {
     // remove mouth if same mouth is on canvas
     const canvas = document.getElementById('mouthCanvas');
@@ -252,7 +261,7 @@ function addMouth() {
       ctx.msImageSmoothingEnabled = false;
       ctx.imageSmoothingEnabled = false;
       ctx.clearRect(0, 0, avatarW, avatarH);
-      ctx.drawImage(img, 12 * unit, 39 * unit, 40 * unit, 16 * unit);
+      ctx.drawImage(img, iX * unit, iY * unit, iW * unit, iH * unit);
 
       mergeCanvases();
       isMouth = mouthFile;
