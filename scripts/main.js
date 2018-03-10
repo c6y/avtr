@@ -45,10 +45,10 @@ preloadimages(
 
 // render eyes library thumbnails to html thumbs
 const eyesCount = eyes.length;
-let imgElement = '';
+let imgElementEye = '';
 let i;
 for (i = 0; i < eyesCount; i++) {
-  imgElement +=
+  imgElementEye +=
     '<span class="eyeThumbOff"><img alt="' +
     i +
     '" onclick="addEyes()" src="media/eyes/' +
@@ -56,8 +56,22 @@ for (i = 0; i < eyesCount; i++) {
     '" /></span>';
 }
 
+// render noses library thumbnails to html thumbs
+const nosesCount = noses.length;
+let imgElementNose = '';
+let n;
+for (n = 0; n < nosesCount; n++) {
+  imgElementNose +=
+    '<span class="noseThumbOff"><img alt="' +
+    n +
+    '" onclick="addNose()" src="media/nose/' +
+    noses[n].filename +
+    '" /></span>';
+}
+
 window.onload = function() {
-  document.getElementById('eyes').innerHTML = imgElement;
+  document.getElementById('eyes').innerHTML = imgElementEye;
+  document.getElementById('noses').innerHTML = imgElementNose;
 };
 
 /**
@@ -127,14 +141,13 @@ function addEyes() {
   const img = new Image();
 
   img.src = this.event.target.src;
-  const eyeNumber = this.event.target.alt;
-  console.log('eyeNumber: ' + eyeNumber);
 
-  // img.src = 'media/eyes/' + eyes[0].filename;
-  const iX = eyes[eyeNumber].x;
-  const iY = eyes[eyeNumber].y;
-  const iW = eyes[eyeNumber].w;
-  const iH = eyes[eyeNumber].h;
+  // get eye properties
+  const idx = this.event.target.alt;
+  const iX = eyes[idx].x;
+  const iY = eyes[idx].y;
+  const iW = eyes[idx].w;
+  const iH = eyes[idx].h;
 
   const eyesFile = img.src;
 
@@ -179,7 +192,16 @@ function addEyes() {
 function addNose() {
   const img = new Image();
   img.src = this.event.target.src;
+
+  // get nose properties
+  const idx = this.event.target.alt;
+  const iX = noses[idx].x;
+  const iY = noses[idx].y;
+  const iW = noses[idx].w;
+  const iH = noses[idx].h;
+
   const noseFile = img.src;
+
   if (isNose === noseFile) {
     // remove nose if same nose is on canvas
     const canvas = document.getElementById('noseCanvas');
@@ -197,7 +219,7 @@ function addNose() {
       ctx.msImageSmoothingEnabled = false;
       ctx.imageSmoothingEnabled = false;
       ctx.clearRect(0, 0, avatarW, avatarH);
-      ctx.drawImage(img, 16 * unit, 9 * unit, 32 * unit, 32 * unit);
+      ctx.drawImage(img, iX * unit, iY * unit, iW * unit, iH * unit);
 
       mergeCanvases();
       isNose = noseFile;
