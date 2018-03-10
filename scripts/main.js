@@ -117,7 +117,7 @@ function addHead() {
       colorIndex = 0;
     }
   };
-  setThisToActiveClass('imgOff', 'imgOn');
+  setThisToActiveClass('headTOff', 'headTOn');
 }
 
 /**
@@ -145,7 +145,7 @@ function addEyes() {
     ctx.clearRect(0, 0, avatarW, avatarH);
     mergeCanvases();
     isEyes = null;
-    this.event.target.setAttribute('class', 'imgOff');
+    this.event.target.setAttribute('class', 'eyeTOff');
   } else {
     // draw eyes if there's no or different eyes
     img.onload = function() {
@@ -167,7 +167,7 @@ function addEyes() {
       mergeCanvases();
       isEyes = eyesFile;
     };
-    setThisToActiveClass('imgOff', 'imgOn');
+    setThisToActiveClass('eyeTOff', 'eyeTOn');
   }
 }
 
@@ -185,7 +185,7 @@ function addNose() {
     ctx.clearRect(0, 0, avatarW, avatarH);
     mergeCanvases();
     isNose = null;
-    this.event.target.setAttribute('class', 'imgOff');
+    this.event.target.setAttribute('class', 'noseTOff');
   } else {
     // draw nose if there's no or different nose
     img.onload = function() {
@@ -200,7 +200,7 @@ function addNose() {
       mergeCanvases();
       isNose = noseFile;
     };
-    setThisToActiveClass('imgOff', 'imgOn');
+    setThisToActiveClass('noseTOff', 'noseTOn');
   }
 }
 
@@ -218,7 +218,7 @@ function addMouth() {
     ctx.clearRect(0, 0, avatarW, avatarH);
     mergeCanvases();
     isMouth = null;
-    this.event.target.setAttribute('class', 'imgOff');
+    this.event.target.setAttribute('class', 'mouthTOff');
   } else {
     // draw mouth if there's no or different mouth
     img.onload = function() {
@@ -233,7 +233,7 @@ function addMouth() {
       mergeCanvases();
       isMouth = mouthFile;
     };
-    setThisToActiveClass('imgOff', 'imgOn');
+    setThisToActiveClass('mouthTOff', 'mouthTOn');
   }
 }
 

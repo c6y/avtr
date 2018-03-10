@@ -134,11 +134,19 @@ body {
   background-color: #eee;
 }
 
-.imgOff {
+.imgOff,
+.headTOff,
+.eyeTOff,
+.noseTOff,
+.mouthTOff {
   background-color: #eee;
 }
 
-.imgOn {
+.imgOn,
+.headTOn,
+.eyeTOn,
+.noseTOn,
+.mouthTOn {
   background-color: #ccc;
 }
 
