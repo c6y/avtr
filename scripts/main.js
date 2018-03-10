@@ -49,7 +49,7 @@ let imgElement = '';
 let i;
 for (i = 0; i < eyesCount; i++) {
   imgElement +=
-    '<span class="eyeThumb"><img class="imgOff" alt="' +
+    '<span class="eyeThumbOff"><img alt="' +
     i +
     '" onclick="addEyes()" src="media/eyes/' +
     eyes[i].filename +
@@ -117,7 +117,7 @@ function addHead() {
       colorIndex = 0;
     }
   };
-  setThisToActiveClass('headTOff', 'headTOn');
+  switchParentClass('headThumbOff', 'headThumbOn');
 }
 
 /**
@@ -145,7 +145,7 @@ function addEyes() {
     ctx.clearRect(0, 0, avatarW, avatarH);
     mergeCanvases();
     isEyes = null;
-    this.event.target.setAttribute('class', 'eyeTOff');
+    this.event.currentTarget.parentNode.setAttribute('class', 'eyeThumbOff');
   } else {
     // draw eyes if there's no or different eyes
     img.onload = function() {
@@ -167,7 +167,9 @@ function addEyes() {
       mergeCanvases();
       isEyes = eyesFile;
     };
-    setThisToActiveClass('eyeTOff', 'eyeTOn');
+
+    // set parent class to active
+    switchParentClass('eyeThumbOff', 'eyeThumbOn');
   }
 }
 
@@ -185,7 +187,7 @@ function addNose() {
     ctx.clearRect(0, 0, avatarW, avatarH);
     mergeCanvases();
     isNose = null;
-    this.event.target.setAttribute('class', 'noseTOff');
+    this.event.currentTarget.parentNode.setAttribute('class', 'noseThumbOff');
   } else {
     // draw nose if there's no or different nose
     img.onload = function() {
@@ -200,7 +202,7 @@ function addNose() {
       mergeCanvases();
       isNose = noseFile;
     };
-    setThisToActiveClass('noseTOff', 'noseTOn');
+    switchParentClass('noseThumbOff', 'noseThumbOn');
   }
 }
 
@@ -218,7 +220,7 @@ function addMouth() {
     ctx.clearRect(0, 0, avatarW, avatarH);
     mergeCanvases();
     isMouth = null;
-    this.event.target.setAttribute('class', 'mouthTOff');
+    this.event.currentTarget.parentNode.setAttribute('class', 'mouthThumbOff');
   } else {
     // draw mouth if there's no or different mouth
     img.onload = function() {
@@ -233,7 +235,7 @@ function addMouth() {
       mergeCanvases();
       isMouth = mouthFile;
     };
-    setThisToActiveClass('mouthTOff', 'mouthTOn');
+    switchParentClass('mouthThumbOff', 'mouthThumbOn');
   }
 }
 
@@ -310,6 +312,7 @@ function removeMouth() {
   mergeCanvases();
 }
 
+// DELETE FUNCTION?
 /**
  * assign activeClass to clicked element
  * assign inactiveClass to other element
@@ -326,6 +329,24 @@ function setThisToActiveClass(inactiveClass, activeClass) {
   }
   // set active class to this element
   this.event.target.setAttribute('class', activeClass);
+}
+
+/**
+ * find element with toClass and replace it with fromClass
+ * assign toClass to parent of target element
+ * @param {string} fromClass inactive class name
+ * @param {string} toClass active class name
+ */
+function switchParentClass(fromClass, toClass) {
+  // remove toClass from other element
+  const elements = document.getElementsByClassName(toClass);
+  // only take the first element in array (there should only be one)
+  const requiredElement = elements[0];
+  if (requiredElement) {
+    requiredElement.setAttribute('class', fromClass);
+  }
+  // set toClass to parent of this element
+  this.event.currentTarget.parentNode.setAttribute('class', toClass);
 }
 
 /**

@@ -85,22 +85,25 @@ body {
   z-index: 100;
 }
 
-.eyeThumb img {
+.headThumbOn img,
+.headThumbOff img,
+.eyeThumbOn img,
+.eyeThumbOff img,
+.noseThumbOn img,
+.noseThumbOff img,
+.mouthThumbOn img,
+.mouthThumbOff img {
   height: 56px;
-  width: 56px;
   margin: 4px;
   object-fit: contain;
+  width: 56px;
 }
 
-.noseThumb img {
-  height: 64px;
-  width: 64px;
-}
-
-.mouthThumb img {
+/* .mouthThumbOn img,
+.mouthThumbOff img {
   height: 32px;
   width: 80px;
-}
+} */
 
 #library img {
   image-rendering: pixelated;
@@ -123,30 +126,31 @@ body {
   margin-bottom: 4px;
 }
 
-.headThumb,
-.eyeThumb,
-.noseThumb,
-.mouthThumb {
-  line-height: 0;
+.headThumbOff,
+.eyeThumbOff,
+.noseThumbOff,
+.mouthThumbOff,
+.headThumbOn,
+.eyeThumbOn,
+.noseThumbOn,
+.mouthThumbOn {
   cursor: pointer;
-  width: 64px;
   height: 64px;
+  line-height: 0;
+  width: 64px;
+}
+
+.headThumbOff,
+.eyeThumbOff,
+.noseThumbOff,
+.mouthThumbOff {
   background-color: #eee;
 }
 
-.imgOff,
-.headTOff,
-.eyeTOff,
-.noseTOff,
-.mouthTOff {
-  background-color: #eee;
-}
-
-.imgOn,
-.headTOn,
-.eyeTOn,
-.noseTOn,
-.mouthTOn {
+.headThumbOn,
+.eyeThumbOn,
+.noseThumbOn,
+.mouthThumbOn {
   background-color: #ccc;
 }
 
