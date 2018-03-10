@@ -49,7 +49,7 @@ let imgElement = '';
 let i;
 for (i = 0; i < eyesCount; i++) {
   imgElement +=
-    '<span class="eyesElement"><img class="eyesElement" alt="' +
+    '<span class="eyeThumb"><img class="imgOff" alt="' +
     i +
     '" onclick="addEyes()" src="media/eyes/' +
     eyes[i].filename +
@@ -57,7 +57,7 @@ for (i = 0; i < eyesCount; i++) {
 }
 
 window.onload = function() {
-  document.getElementById('eyesLib').innerHTML = imgElement;
+  document.getElementById('eyes').innerHTML = imgElement;
 };
 
 /**
@@ -117,7 +117,7 @@ function addHead() {
       colorIndex = 0;
     }
   };
-  setThisToActiveClass('headElement', 'headElementActive');
+  setThisToActiveClass('imgOff', 'imgOn');
 }
 
 /**
@@ -145,7 +145,7 @@ function addEyes() {
     ctx.clearRect(0, 0, avatarW, avatarH);
     mergeCanvases();
     isEyes = null;
-    this.event.target.setAttribute('class', 'eyesElement');
+    this.event.target.setAttribute('class', 'imgOff');
   } else {
     // draw eyes if there's no or different eyes
     img.onload = function() {
@@ -167,7 +167,7 @@ function addEyes() {
       mergeCanvases();
       isEyes = eyesFile;
     };
-    setThisToActiveClass('eyesElement', 'eyesElementActive');
+    setThisToActiveClass('imgOff', 'imgOn');
   }
 }
 
@@ -185,7 +185,7 @@ function addNose() {
     ctx.clearRect(0, 0, avatarW, avatarH);
     mergeCanvases();
     isNose = null;
-    this.event.target.setAttribute('class', 'noseElement');
+    this.event.target.setAttribute('class', 'imgOff');
   } else {
     // draw nose if there's no or different nose
     img.onload = function() {
@@ -200,7 +200,7 @@ function addNose() {
       mergeCanvases();
       isNose = noseFile;
     };
-    setThisToActiveClass('noseElement', 'noseElementActive');
+    setThisToActiveClass('imgOff', 'imgOn');
   }
 }
 
@@ -218,7 +218,7 @@ function addMouth() {
     ctx.clearRect(0, 0, avatarW, avatarH);
     mergeCanvases();
     isMouth = null;
-    this.event.target.setAttribute('class', 'mouthElement');
+    this.event.target.setAttribute('class', 'imgOff');
   } else {
     // draw mouth if there's no or different mouth
     img.onload = function() {
@@ -233,7 +233,7 @@ function addMouth() {
       mergeCanvases();
       isMouth = mouthFile;
     };
-    setThisToActiveClass('mouthElement', 'mouthElementActive');
+    setThisToActiveClass('imgOff', 'imgOn');
   }
 }
 
