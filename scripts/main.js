@@ -195,10 +195,10 @@ function addNose() {
 
   // get nose properties
   const idx = this.event.target.alt;
-  const iX = noses[idx].x;
-  const iY = noses[idx].y;
   const iW = noses[idx].w;
   const iH = noses[idx].h;
+  const iX = noses[idx].x + noseCenter.x - Math.floor(iW / 2);
+  const iY = noses[idx].y + noseCenter.y - Math.floor(iH / 2);
 
   const noseFile = img.src;
 
@@ -237,10 +237,10 @@ function addMouth() {
 
   // get nose properties
   const idx = this.event.target.alt;
-  const iX = mouths[idx].x;
-  const iY = mouths[idx].y;
   const iW = mouths[idx].w;
   const iH = mouths[idx].h;
+  const iX = mouths[idx].x + mouthCenter.x - Math.floor(iW / 2);
+  const iY = mouths[idx].y + mouthCenter.y - Math.floor(iH / 2);
 
   const mouthFile = img.src;
 
