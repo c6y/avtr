@@ -64,7 +64,7 @@ window.onload = function() {
  * add head to head canvas, remove previous head
  */
 function addHead() {
-  const colorSetACount = colorSetA.length;
+  const colorSetACount = colors.length;
 
   // get head shape that is clicked on
   const img = new Image();
@@ -92,7 +92,7 @@ function addHead() {
     // color head
     ctx.globalCompositeOperation = 'source-atop';
     console.log('colorIndex: ' + colorIndex);
-    const newColor = colorSetA[colorIndex];
+    const newColor = colors[colorIndex];
     ctx.fillStyle = newColor;
     ctx.fillRect(0, 0, avatarW, avatarH);
 
