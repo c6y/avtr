@@ -144,10 +144,11 @@ function addEyes() {
 
   // get eye properties
   const idx = this.event.target.alt;
-  const iX = eyes[idx].x;
-  const iY = eyes[idx].y;
+
   const iW = eyes[idx].w;
   const iH = eyes[idx].h;
+  const iX = eyes[idx].x + eyeCenter.x - Math.floor(iW / 2);
+  const iY = eyes[idx].y + eyeCenter.y - Math.floor(iH / 2);
 
   const eyesFile = img.src;
 
