@@ -6,7 +6,13 @@
   <meta name="author" content="eboy">
   <title>eboy avtr</title>
   <link rel="stylesheet" type="text/css" href="style.css">
-  <script src="script.js"></script>
+
+  <script type="text/javascript" src="lib/colordata.js"></script>
+  <script type="text/javascript" src="lib/eyedata.js"></script>
+  <script type="text/javascript" src="lib/nosedata.js"></script>
+  <script type="text/javascript" src="lib/mouthdata.js"></script>
+  <script type="text/javascript" src="scripts/main.js"></script>
+
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=1.0, user-scalable=1" />
@@ -14,6 +20,7 @@
 <body>
 
   <div id="viewport">
+    <img id="safezone" class="showSafezone" src="media/safezones.png" width="512" height="512">
     <canvas id="backCanvas" width="1024" height="1024">
     </canvas>
     <canvas id="headCanvas" width="1024" height="1024">
@@ -37,136 +44,34 @@
 
   <div id="library">
     <div id="shapes" class="showLib">
-      <span class="headLib">
-        <img src="media/head/head-001.svg" onclick="addHead()" class="headElement">
+      <span class="headThumbOff">
+        <img src="media/head/head-001.svg" onclick="addHead()">
       </span>
-      <span class="headLib">
-        <img src="media/head/head-002.svg" onclick="addHead()" class="headElement">
+      <span class="headThumbOff">
+        <img src="media/head/head-002.svg" onclick="addHead()">
       </span>
-      <span class="headLib">
-        <img src="media/head/head-003.svg" onclick="addHead()" class="headElement">
+      <span class="headThumbOff">
+        <img src="media/head/head-003.svg" onclick="addHead()">
       </span>
-      <span class="headLib">
-        <img src="media/head/head-004.svg" onclick="addHead()" class="headElement">
+      <span class="headThumbOff">
+        <img src="media/head/head-004.svg" onclick="addHead()">
       </span>
-      <span class="headLib">
-        <img src="media/head/head-005.svg" onclick="addHead()" class="headElement">
+      <span class="headThumbOff">
+        <img src="media/head/head-005.svg" onclick="addHead()">
       </span>
-      <span class="headLib">
-        <img src="media/head/head-006.svg" onclick="addHead()" class="headElement">
+      <span class="headThumbOff">
+        <img src="media/head/head-006.svg" onclick="addHead()">
       </span>
-      <span class="headLib">
-        <img src="media/head/head-007.svg" onclick="addHead()" class="headElement">
+      <span class="headThumbOff">
+        <img src="media/head/head-007.svg" onclick="addHead()">
       </span>
-      <span class="headLib">
-        <img src="media/head/head-008.svg" onclick="addHead()" class="headElement">
-      </span>
-    </div>
-    <div id="eyes" class="hideLib">
-      <span class="eyesLib">
-        <img src="media/eyes/eyes-001-1.png" onclick="addEyes()" class="eyesElement">
-      </span>
-      <span class="eyesLib">
-        <img src="media/eyes/eyes-002-1.png" onclick="addEyes()" class="eyesElement">
-      </span>
-      <span class="eyesLib">
-        <img src="media/eyes/eyes-003-1.png" onclick="addEyes()" class="eyesElement">
-      </span>
-      <span class="eyesLib">
-        <img src="media/eyes/eyes-004-1.png" onclick="addEyes()" class="eyesElement">
-      </span>
-      <span class="eyesLib">
-        <img src="media/eyes/eyes-005-1.png" onclick="addEyes()" class="eyesElement">
-      </span>
-      <span class="eyesLib">
-        <img src="media/eyes/eyes-006-1.png" onclick="addEyes()" class="eyesElement">
-      </span>
-      <span class="eyesLib">
-        <img src="media/eyes/eyes-007-1.png" onclick="addEyes()" class="eyesElement">
-      </span>
-      <span class="eyesLib">
-        <img src="media/eyes/eyes-008-1.png" onclick="addEyes()" class="eyesElement">
-      </span>
-      <span class="eyesLib">
-        <img src="media/eyes/eyes-009-1.png" onclick="addEyes()" class="eyesElement">
-      </span>
-      <span class="eyesLib">
-        <img src="media/eyes/eyes-010-1.png" onclick="addEyes()" class="eyesElement">
-      </span>
-      <span class="eyesLib">
-        <img src="media/eyes/eyes-011-1.png" onclick="addEyes()" class="eyesElement">
+      <span class="headThumbOff">
+        <img src="media/head/head-008.svg" onclick="addHead()">
       </span>
     </div>
-    <div id="noses" class="hideLib">
-      <span class="noseLib">
-        <img src="media/nose/nose-001-1.png" onclick="addNose()" class="noseElement">
-      </span>
-      <span class="noseLib">
-        <img src="media/nose/nose-002-1.png" onclick="addNose()" class="noseElement">
-      </span>
-      <span class="noseLib">
-        <img src="media/nose/nose-003-1.png" onclick="addNose()" class="noseElement">
-      </span>
-      <span class="noseLib">
-        <img src="media/nose/nose-004-1.png" onclick="addNose()" class="noseElement">
-      </span>
-      <span class="noseLib">
-        <img src="media/nose/nose-005-1.png" onclick="addNose()" class="noseElement">
-      </span>
-      <span class="noseLib">
-        <img src="media/nose/nose-006-1.png" onclick="addNose()" class="noseElement">
-      </span>
-      <span class="noseLib">
-        <img src="media/nose/nose-007-1.png" onclick="addNose()" class="noseElement">
-      </span>
-      <span class="noseLib">
-        <img src="media/nose/nose-008-1.png" onclick="addNose()" class="noseElement">
-      </span>
-      <span class="noseLib">
-        <img src="media/nose/nose-009-1.png" onclick="addNose()" class="noseElement">
-      </span>
-      <span class="noseLib">
-        <img src="media/nose/nose-010-1.png" onclick="addNose()" class="noseElement">
-      </span>
-      <span class="noseLib">
-        <img src="media/nose/nose-011-1.png" onclick="addNose()" class="noseElement">
-      </span>
-    </div>
-    <div id="mouths" class="hideLib">
-      <span class="mouthLib">
-        <img src="media/mouth/mouth-001-1.png" onclick="addMouth()" class="mouthElement">
-      </span>
-      <span class="mouthLib">
-        <img src="media/mouth/mouth-002-1.png" onclick="addMouth()" class="mouthElement">
-      </span>
-      <span class="mouthLib">
-        <img src="media/mouth/mouth-003-1.png" onclick="addMouth()" class="mouthElement">
-      </span>
-      <span class="mouthLib">
-        <img src="media/mouth/mouth-004-1.png" onclick="addMouth()" class="mouthElement">
-      </span>
-      <span class="mouthLib">
-        <img src="media/mouth/mouth-005-1.png" onclick="addMouth()" class="mouthElement">
-      </span>
-      <span class="mouthLib">
-        <img src="media/mouth/mouth-006-1.png" onclick="addMouth()" class="mouthElement">
-      </span>
-      <span class="mouthLib">
-        <img src="media/mouth/mouth-007-1.png" onclick="addMouth()" class="mouthElement">
-      </span>
-      <span class="mouthLib">
-        <img src="media/mouth/mouth-008-1.png" onclick="addMouth()" class="mouthElement">
-      </span>
-      <span class="mouthLib">
-        <img src="media/mouth/mouth-009-1.png" onclick="addMouth()" class="mouthElement">
-      </span>
-      <span class="mouthLib">
-        <img src="media/mouth/mouth-010-1.png" onclick="addMouth()" class="mouthElement">
-      </span>
-      <span class="mouthLib">
-        <img src="media/mouth/mouth-011-1.png" onclick="addMouth()" class="mouthElement">
-      </span>
-    </div>
+    <div id="eyes" class="hideLib"></div>
+    <div id="noses" class="hideLib"></div>
+    <div id="mouths" class="hideLib"></div>
   </div>
 
   <div id="download-box">
@@ -174,7 +79,7 @@
   </div>
 
   <div class="copyright">
-    <div>&copy; eboy | cc-by-sa-4.0</div>
+    <div>&copy; eboy | cc-by-sa-4.0 <span class="toggleSZ" onclick="toggleSafezone()">[sz]</span> </div>
   </div>
 </body>
 </html>

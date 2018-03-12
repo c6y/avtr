@@ -10,7 +10,7 @@ let isMouth = null;
 
 let colorIndex = 0;
 
-const showSafezones = false; //[dev] toggle safezones, default is false;
+let showSafezones = true; // [dev] toggle safezones, default is false;
 
 let pImages = [];
 
@@ -43,36 +43,60 @@ preloadimages(
   '/media/safezones.png'
 );
 
-const colorSetA = [
-  '#4088EE',
-  '#33BB55',
-  '#A3866A',
-  '#FF3333',
-  '#FFDD00',
-  '#F8AA8F',
-  '#B156C4',
-  '#23D6C9',
-  '#58423e',
-  '#FF0088',
-  '#ff8c00',
-  '#c99789'
-];
+// render eyes library thumbnails to html thumbs
+const eyesCount = eyes.length;
+let imgElementEye = '';
+let i;
+for (i = 0; i < eyesCount; i++) {
+  imgElementEye +=
+    '<span class="eyeThumbOff"><img alt="' +
+    i +
+    '" onclick="addEyes()" src="media/eyes/' +
+    eyes[i].filename +
+    '" /></span>';
+}
+
+// render noses library thumbnails to html thumbs
+const nosesCount = noses.length;
+let imgElementNose = '';
+let n;
+for (n = 0; n < nosesCount; n++) {
+  imgElementNose +=
+    '<span class="noseThumbOff"><img alt="' +
+    n +
+    '" onclick="addNose()" src="media/nose/' +
+    noses[n].filename +
+    '" /></span>';
+}
+
+// render noses library thumbnails to html thumbs
+const mouthsCount = mouths.length;
+let imgElementMouth = '';
+let m;
+for (m = 0; m < mouthsCount; m++) {
+  imgElementMouth +=
+    '<span class="mouthThumbOff"><img alt="' +
+    m +
+    '" onclick="addMouth()" src="media/mouth/' +
+    mouths[m].filename +
+    '" /></span>';
+}
+
+window.onload = function() {
+  document.getElementById('eyes').innerHTML = imgElementEye;
+  document.getElementById('noses').innerHTML = imgElementNose;
+  document.getElementById('mouths').innerHTML = imgElementMouth;
+};
 
 /**
  * add head to head canvas, remove previous head
  */
 function addHead() {
-  const colorSetACount = colorSetA.length;
+  const colorSetACount = colors.length;
 
   // get head shape that is clicked on
   const img = new Image();
   img.src = this.event.target.src;
-
-  //  [dev] load safezones image if set to true
-  if (showSafezones) {
-    const safezone = new Image();
-    safezone.src = dir + '/media/safezones.png';
-  }
 
   // get default neck shape
   const imgNeck = new Image();
@@ -90,17 +114,9 @@ function addHead() {
     // color head
     ctx.globalCompositeOperation = 'source-atop';
     console.log('colorIndex: ' + colorIndex);
-    const newColor = colorSetA[colorIndex];
+    const newColor = colors[colorIndex];
     ctx.fillStyle = newColor;
     ctx.fillRect(0, 0, avatarW, avatarH);
-
-    // [dev] display safezones if set to true
-    if (showSafezones) {
-      ctx.imageSmoothingEnabled = false;
-      ctx.globalAlpha = 0.1;
-      ctx.drawImage(safezone, 0, 0, avatarW, avatarH);
-      ctx.globalAlpha = 1;
-    }
 
     // draw neck
     ctx.globalCompositeOperation = 'destination-over';
@@ -115,7 +131,7 @@ function addHead() {
       colorIndex = 0;
     }
   };
-  setThisToActiveClass('headElement', 'headElementActive');
+  switchParentClass('headThumbOff', 'headThumbOn');
 }
 
 /**
@@ -123,8 +139,18 @@ function addHead() {
  */
 function addEyes() {
   const img = new Image();
+
   img.src = this.event.target.src;
+
+  // get eye properties
+  const idx = this.event.target.alt;
+  const iX = eyes[idx].x;
+  const iY = eyes[idx].y;
+  const iW = eyes[idx].w;
+  const iH = eyes[idx].h;
+
   const eyesFile = img.src;
+
   if (isEyes === eyesFile) {
     // remove eyes if same eyes is on canvas
     const canvas = document.getElementById('eyesCanvas');
@@ -132,7 +158,7 @@ function addEyes() {
     ctx.clearRect(0, 0, avatarW, avatarH);
     mergeCanvases();
     isEyes = null;
-    this.event.target.setAttribute('class', 'eyesElement');
+    this.event.currentTarget.parentNode.setAttribute('class', 'eyeThumbOff');
   } else {
     // draw eyes if there's no or different eyes
     img.onload = function() {
@@ -142,19 +168,21 @@ function addEyes() {
       ctx.msImageSmoothingEnabled = false;
       ctx.imageSmoothingEnabled = false;
       ctx.clearRect(0, 0, avatarW, avatarH);
-      // draw left eye
-      ctx.drawImage(img, 3 * unit, 8 * unit, 32 * unit, 32 * unit);
-      // mirror eye
+      // draw first (left) eye
+      ctx.drawImage(img, iX * unit, iY * unit, iW * unit, iH * unit);
+      // mirror and draw second (right) eye
       ctx.save();
       ctx.translate(64 * unit, 0);
       ctx.scale(-1, 1);
-      ctx.drawImage(img, 3 * unit, 8 * unit, 32 * unit, 32 * unit);
+      ctx.drawImage(img, iX * unit, iY * unit, iW * unit, iH * unit);
       ctx.restore();
 
       mergeCanvases();
       isEyes = eyesFile;
     };
-    setThisToActiveClass('eyesElement', 'eyesElementActive');
+
+    // set parent class to active
+    switchParentClass('eyeThumbOff', 'eyeThumbOn');
   }
 }
 
@@ -164,7 +192,16 @@ function addEyes() {
 function addNose() {
   const img = new Image();
   img.src = this.event.target.src;
+
+  // get nose properties
+  const idx = this.event.target.alt;
+  const iW = noses[idx].w;
+  const iH = noses[idx].h;
+  const iX = noses[idx].x + noseCenter.x - Math.floor(iW / 2);
+  const iY = noses[idx].y + noseCenter.y - Math.floor(iH / 2);
+
   const noseFile = img.src;
+
   if (isNose === noseFile) {
     // remove nose if same nose is on canvas
     const canvas = document.getElementById('noseCanvas');
@@ -172,7 +209,7 @@ function addNose() {
     ctx.clearRect(0, 0, avatarW, avatarH);
     mergeCanvases();
     isNose = null;
-    this.event.target.setAttribute('class', 'noseElement');
+    this.event.currentTarget.parentNode.setAttribute('class', 'noseThumbOff');
   } else {
     // draw nose if there's no or different nose
     img.onload = function() {
@@ -182,12 +219,12 @@ function addNose() {
       ctx.msImageSmoothingEnabled = false;
       ctx.imageSmoothingEnabled = false;
       ctx.clearRect(0, 0, avatarW, avatarH);
-      ctx.drawImage(img, 16 * unit, 9 * unit, 32 * unit, 32 * unit);
+      ctx.drawImage(img, iX * unit, iY * unit, iW * unit, iH * unit);
 
       mergeCanvases();
       isNose = noseFile;
     };
-    setThisToActiveClass('noseElement', 'noseElementActive');
+    switchParentClass('noseThumbOff', 'noseThumbOn');
   }
 }
 
@@ -197,7 +234,16 @@ function addNose() {
 function addMouth() {
   const img = new Image();
   img.src = this.event.target.src;
+
+  // get nose properties
+  const idx = this.event.target.alt;
+  const iW = mouths[idx].w;
+  const iH = mouths[idx].h;
+  const iX = mouths[idx].x + mouthCenter.x - Math.floor(iW / 2);
+  const iY = mouths[idx].y + mouthCenter.y - Math.floor(iH / 2);
+
   const mouthFile = img.src;
+
   if (isMouth === mouthFile) {
     // remove mouth if same mouth is on canvas
     const canvas = document.getElementById('mouthCanvas');
@@ -205,7 +251,7 @@ function addMouth() {
     ctx.clearRect(0, 0, avatarW, avatarH);
     mergeCanvases();
     isMouth = null;
-    this.event.target.setAttribute('class', 'mouthElement');
+    this.event.currentTarget.parentNode.setAttribute('class', 'mouthThumbOff');
   } else {
     // draw mouth if there's no or different mouth
     img.onload = function() {
@@ -215,12 +261,12 @@ function addMouth() {
       ctx.msImageSmoothingEnabled = false;
       ctx.imageSmoothingEnabled = false;
       ctx.clearRect(0, 0, avatarW, avatarH);
-      ctx.drawImage(img, 12 * unit, 39 * unit, 40 * unit, 16 * unit);
+      ctx.drawImage(img, iX * unit, iY * unit, iW * unit, iH * unit);
 
       mergeCanvases();
       isMouth = mouthFile;
     };
-    setThisToActiveClass('mouthElement', 'mouthElementActive');
+    switchParentClass('mouthThumbOff', 'mouthThumbOn');
   }
 }
 
@@ -297,6 +343,7 @@ function removeMouth() {
   mergeCanvases();
 }
 
+// DELETE FUNCTION?
 /**
  * assign activeClass to clicked element
  * assign inactiveClass to other element
@@ -313,6 +360,24 @@ function setThisToActiveClass(inactiveClass, activeClass) {
   }
   // set active class to this element
   this.event.target.setAttribute('class', activeClass);
+}
+
+/**
+ * find element with toClass and replace it with fromClass
+ * assign toClass to parent of target element
+ * @param {string} fromClass inactive class name
+ * @param {string} toClass active class name
+ */
+function switchParentClass(fromClass, toClass) {
+  // remove toClass from other element
+  const elements = document.getElementsByClassName(toClass);
+  // only take the first element in array (there should only be one)
+  const requiredElement = elements[0];
+  if (requiredElement) {
+    requiredElement.setAttribute('class', fromClass);
+  }
+  // set toClass to parent of this element
+  this.event.currentTarget.parentNode.setAttribute('class', toClass);
 }
 
 /**
@@ -362,5 +427,19 @@ function setActiveTab() {
     // set showLib class to element 'shapes'
     const setActiveElement = document.getElementById('shapes');
     setActiveElement.setAttribute('class', 'showLib');
+  }
+}
+
+/**
+ * toggle safezone display for dev
+ */
+function toggleSafezone() {
+  const setSafezoneElement = document.getElementById('safezone');
+  if (showSafezones) {
+    setSafezoneElement.setAttribute('class', 'hideSafezone');
+    showSafezones = false;
+  } else {
+    setSafezoneElement.setAttribute('class', 'showSafezone');
+    showSafezones = true;
   }
 }
