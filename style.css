@@ -29,14 +29,6 @@ body {
   top: 0;
 }
 
-#safezone {
-  position: absolute;
-  z-index: 1;
-  background-color: red;
-  image-rendering: pixelated;
-  filter: opacity(0.2);
-}
-
 #backCanvas {
   z-index: 2;
 }
@@ -178,4 +170,25 @@ button {
   font-size: 0.75em;
   margin: auto;
   width: 512px;
+}
+
+#safezone {
+  position: absolute;
+  z-index: 1;
+  background-color: red;
+  image-rendering: pixelated;
+  filter: opacity(0.2);
+}
+
+.toggleSZ {
+  cursor: pointer;
+  user-select: none;
+}
+
+.showSafezone {
+  display: inline-block;
+}
+
+.hideSafezone {
+  display: none;
 }

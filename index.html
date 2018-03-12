@@ -20,7 +20,7 @@
 <body>
 
   <div id="viewport">
-    <img id="safezone" src="media/safezones.png" width="512" height="512">
+    <img id="safezone" class="showSafezone" src="media/safezones.png" width="512" height="512">
     <canvas id="backCanvas" width="1024" height="1024">
     </canvas>
     <canvas id="headCanvas" width="1024" height="1024">
@@ -79,7 +79,7 @@
   </div>
 
   <div class="copyright">
-    <div>&copy; eboy | cc-by-sa-4.0</div>
+    <div>&copy; eboy | cc-by-sa-4.0 <span class="toggleSZ" onclick="toggleSafezone()">[sz]</span> </div>
   </div>
 </body>
 </html>

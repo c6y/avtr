@@ -10,7 +10,7 @@ let isMouth = null;
 
 let colorIndex = 0;
 
-const showSafezones = true; // [dev] toggle safezones, default is false;
+let showSafezones = true; // [dev] toggle safezones, default is false;
 
 let pImages = [];
 
@@ -427,5 +427,19 @@ function setActiveTab() {
     // set showLib class to element 'shapes'
     const setActiveElement = document.getElementById('shapes');
     setActiveElement.setAttribute('class', 'showLib');
+  }
+}
+
+/**
+ * toggle safezone display for dev
+ */
+function toggleSafezone() {
+  const setSafezoneElement = document.getElementById('safezone');
+  if (showSafezones) {
+    setSafezoneElement.setAttribute('class', 'hideSafezone');
+    showSafezones = false;
+  } else {
+    setSafezoneElement.setAttribute('class', 'showSafezone');
+    showSafezones = true;
   }
 }
