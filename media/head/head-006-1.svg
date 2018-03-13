@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49 (51002) - http://www.bohemiancoding.com/sketch -->
+    <title>eBoyAvatar</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="eBoyAvatar" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="head-006" transform="translate(5.000000, 5.000000)" fill="#000000" fill-rule="nonzero">
+            <circle id="Oval" cx="15" cy="15" r="15"></circle>
+            <circle id="Oval" cx="39" cy="15" r="15"></circle>
+            <circle id="Oval" cx="15" cy="39" r="15"></circle>
+            <circle id="Oval" cx="39" cy="39" r="15"></circle>
+            <rect id="Rectangle-path" x="17" y="17" width="20" height="20"></rect>
+        </g>
+        <g id="Group-3" transform="translate(8.000000, 8.000000)" fill="#000000">
+            <g id="Group-2" transform="translate(19.000000, 0.000000)">
+                <path d="M2.19622742,0 C2.96527805,0.613378083 3.93982441,0.980000377 5,0.980000377 C6.06017559,0.980000377 7.03472195,0.613378083 7.80377258,0 L10,0 L10,4 L0,4 L0,0 L2.19622742,0 Z" id="Oval-2-Copy"></path>
+                <path d="M2.19622742,43.9000015 C2.96527805,44.5133796 3.93982441,44.8800019 5,44.8800019 C6.06017559,44.8800019 7.03472195,44.5133796 7.80377258,43.9000015 L10,43.9000015 L10,47.9000015 L0,47.9000015 L0,43.9000015 L2.19622742,43.9000015 Z" id="Oval-2-Copy-2" transform="translate(5.000000, 45.900002) rotate(-180.000000) translate(-5.000000, -45.900002) "></path>
+            </g>
+            <g id="Group" transform="translate(24.000000, 24.000000) rotate(-90.000000) translate(-24.000000, -24.000000) translate(19.000000, 0.000000)">
+                <path d="M2.19622742,0 C2.96527805,0.613378083 3.93982441,0.980000377 5,0.980000377 C6.06017559,0.980000377 7.03472195,0.613378083 7.80377258,0 L10,0 L10,4 L0,4 L0,0 L2.19622742,0 Z" id="Oval-2-Copy-4"></path>
+                <path d="M2.19622742,43.9000015 C2.96527805,44.5133796 3.93982441,44.8800019 5,44.8800019 C6.06017559,44.8800019 7.03472195,44.5133796 7.80377258,43.9000015 L10,43.9000015 L10,47.9000015 L0,47.9000015 L0,43.9000015 L2.19622742,43.9000015 Z" id="Oval-2-Copy-3" transform="translate(5.000000, 45.900002) rotate(-180.000000) translate(-5.000000, -45.900002) "></path>
+            </g>
+        </g>
+    </g>
+</svg>

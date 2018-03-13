@@ -113,7 +113,6 @@ function addHead() {
 
     // color head
     ctx.globalCompositeOperation = 'source-atop';
-    console.log('colorIndex: ' + colorIndex);
     const newColor = colors[colorIndex];
     ctx.fillStyle = newColor;
     ctx.fillRect(0, 0, avatarW, avatarH);
