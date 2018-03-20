@@ -4,6 +4,7 @@ const avatarW = 1024; // avatar width
 const avatarH = 1024; // avatar height
 const unit = 16;
 
+let isHead = null;
 let isEyes = null;
 let isNose = null;
 let isMouth = null;
@@ -131,6 +132,8 @@ function addHead() {
     }
   };
   switchParentClass('headThumbOff', 'headThumbOn');
+
+  isHead = this.event.target.id;
 }
 
 /**
@@ -299,8 +302,9 @@ function download() {
   const canvas = document.getElementById('mergedCanvas');
   const imagepng = canvas.toDataURL('image/png');
   const imagestream = imagepng.replace('image/png', 'image/octet-stream');
+  const imageName = isHead + '.png';
   this.event.currentTarget.parentNode.setAttribute('href', imagestream);
-  this.event.currentTarget.parentNode.setAttribute('download', 'foo.png');
+  this.event.currentTarget.parentNode.setAttribute('download', imageName);
 }
 
 /**
