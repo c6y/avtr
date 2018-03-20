@@ -299,7 +299,8 @@ function download() {
   const canvas = document.getElementById('mergedCanvas');
   const imagepng = canvas.toDataURL('image/png');
   const imagestream = imagepng.replace('image/png', 'image/octet-stream');
-  download.setAttribute('href', imagestream);
+  this.event.currentTarget.parentNode.setAttribute('href', imagestream);
+  this.event.currentTarget.parentNode.setAttribute('download', 'foo.png');
 }
 
 /**
