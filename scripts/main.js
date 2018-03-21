@@ -302,13 +302,36 @@ function download() {
   const canvas = document.getElementById('mergedCanvas');
   const imagepng = canvas.toDataURL('image/png');
   const imagestream = imagepng.replace('image/png', 'image/octet-stream');
+
+  // const eyesLength = syllables.length;
+  // console.log('eyesLength: ' + eyesLength);
+  // const rdmIdx = Math.floor(Math.random() * eyesLength);
+  // console.log('rdmIdx: ' + rdmIdx);
+  // const eyeSyllable = syllables[rdmIdx];
+  // console.log('eyeSyllable: ' + eyeSyllable);
+  // // syllables[isEyes];
+
+  const eyesyl = randomSyllable(syllables);
+  console.log('eyesyl: ' + eyesyl);
+  const nosesyl = randomSyllable(syllables);
+  console.log('nosesyl: ' + nosesyl);
+  const mouthsyl = randomSyllable(syllables);
+  console.log('mouthsyl: ' + mouthsyl);
+
   const imageName =
   'eboy-avtr-' +
   isHead +
-  '-e' + isEyes +
-  'n' + isNose +
-  'm' + isMouth +
+  eyesyl +
+  nosesyl +
+  mouthsyl +
   '.png';
+  // const imageName =
+  // 'eboy-avtr-' +
+  // isHead +
+  // 'e' + isEyes +
+  // 'n' + isNose +
+  // 'm' + isMouth +
+  // '.png';
   console.log('imageName: ' + imageName);
   this.event.currentTarget.parentNode.setAttribute('href', imagestream);
   this.event.currentTarget.parentNode.setAttribute('download', imageName);
@@ -454,4 +477,20 @@ function toggleSafezone() {
     setSafezoneElement.setAttribute('class', 'showSafezone');
     showSafezones = true;
   }
+}
+
+/**
+ * return random syllable from array
+ * @param {string} array array to choose syllable from
+ * @return {string} syllable
+
+*/
+function randomSyllable(array) {
+  const l = array.length;
+  // console.log('l: ' + l);
+  const rdmIdx = Math.floor(Math.random() * l);
+  // console.log('rdmIdx: ' + rdmIdx);
+  const s = array[rdmIdx];
+  // console.log('s: ' + s);
+  return s;
 }
