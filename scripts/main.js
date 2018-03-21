@@ -152,9 +152,9 @@ function addEyes() {
   const iX = eyes[idx].x + eyeCenter.x - Math.floor(iW / 2);
   const iY = eyes[idx].y + eyeCenter.y - Math.floor(iH / 2);
 
-  const eyesFile = img.src;
+  const eyesIndex = idx;
 
-  if (isEyes === eyesFile) {
+  if (isEyes === eyesIndex) {
     // remove eyes if same eyes is on canvas
     const canvas = document.getElementById('eyesCanvas');
     const ctx = canvas.getContext('2d');
@@ -181,7 +181,7 @@ function addEyes() {
       ctx.restore();
 
       mergeCanvases();
-      isEyes = eyesFile;
+      isEyes = idx;
     };
 
     // set parent class to active
@@ -203,7 +203,7 @@ function addNose() {
   const iX = noses[idx].x + noseCenter.x - Math.floor(iW / 2);
   const iY = noses[idx].y + noseCenter.y - Math.floor(iH / 2);
 
-  const noseFile = img.src;
+  const noseFile = idx;
 
   if (isNose === noseFile) {
     // remove nose if same nose is on canvas
@@ -225,7 +225,7 @@ function addNose() {
       ctx.drawImage(img, iX * unit, iY * unit, iW * unit, iH * unit);
 
       mergeCanvases();
-      isNose = noseFile;
+      isNose = idx;
     };
     switchParentClass('noseThumbOff', 'noseThumbOn');
   }
@@ -245,7 +245,7 @@ function addMouth() {
   const iX = mouths[idx].x + mouthCenter.x - Math.floor(iW / 2);
   const iY = mouths[idx].y + mouthCenter.y - Math.floor(iH / 2);
 
-  const mouthFile = img.src;
+  const mouthFile = idx;
 
   if (isMouth === mouthFile) {
     // remove mouth if same mouth is on canvas
@@ -267,7 +267,7 @@ function addMouth() {
       ctx.drawImage(img, iX * unit, iY * unit, iW * unit, iH * unit);
 
       mergeCanvases();
-      isMouth = mouthFile;
+      isMouth = idx;
     };
     switchParentClass('mouthThumbOff', 'mouthThumbOn');
   }
@@ -302,7 +302,14 @@ function download() {
   const canvas = document.getElementById('mergedCanvas');
   const imagepng = canvas.toDataURL('image/png');
   const imagestream = imagepng.replace('image/png', 'image/octet-stream');
-  const imageName = isHead + '.png';
+  const imageName =
+  'eboy-avtr-' +
+  isHead +
+  '-e' + isEyes +
+  'n' + isNose +
+  'm' + isMouth +
+  '.png';
+  console.log('imageName: ' + imageName);
   this.event.currentTarget.parentNode.setAttribute('href', imagestream);
   this.event.currentTarget.parentNode.setAttribute('download', imageName);
 }
