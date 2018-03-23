@@ -152,7 +152,7 @@ function addEyes() {
   const iX = eyes[idx].x + eyeCenter.x - Math.floor(iW / 2);
   const iY = eyes[idx].y + eyeCenter.y - Math.floor(iH / 2);
 
-  const eyesIndex = idx;
+  const eyesIndex = Number(idx);
 
   if (isEyes === eyesIndex) {
     // remove eyes if same eyes is on canvas
@@ -181,7 +181,7 @@ function addEyes() {
       ctx.restore();
 
       mergeCanvases();
-      isEyes = idx;
+      isEyes = Number(idx);
     };
 
     // set parent class to active
@@ -203,7 +203,7 @@ function addNose() {
   const iX = noses[idx].x + noseCenter.x - Math.floor(iW / 2);
   const iY = noses[idx].y + noseCenter.y - Math.floor(iH / 2);
 
-  const noseFile = idx;
+  const noseFile = Number(idx);
 
   if (isNose === noseFile) {
     // remove nose if same nose is on canvas
@@ -225,7 +225,7 @@ function addNose() {
       ctx.drawImage(img, iX * unit, iY * unit, iW * unit, iH * unit);
 
       mergeCanvases();
-      isNose = idx;
+      isNose = Number(idx);
     };
     switchParentClass('noseThumbOff', 'noseThumbOn');
   }
@@ -245,7 +245,7 @@ function addMouth() {
   const iX = mouths[idx].x + mouthCenter.x - Math.floor(iW / 2);
   const iY = mouths[idx].y + mouthCenter.y - Math.floor(iH / 2);
 
-  const mouthFile = idx;
+  const mouthFile = Number(idx);
 
   if (isMouth === mouthFile) {
     // remove mouth if same mouth is on canvas
@@ -267,7 +267,7 @@ function addMouth() {
       ctx.drawImage(img, iX * unit, iY * unit, iW * unit, iH * unit);
 
       mergeCanvases();
-      isMouth = idx;
+      isMouth = Number(idx);
     };
     switchParentClass('mouthThumbOff', 'mouthThumbOn');
   }
@@ -303,20 +303,9 @@ function download() {
   const imagepng = canvas.toDataURL('image/png');
   const imagestream = imagepng.replace('image/png', 'image/octet-stream');
 
-  // const eyesLength = syllables.length;
-  // console.log('eyesLength: ' + eyesLength);
-  // const rdmIdx = Math.floor(Math.random() * eyesLength);
-  // console.log('rdmIdx: ' + rdmIdx);
-  // const eyeSyllable = syllables[rdmIdx];
-  // console.log('eyeSyllable: ' + eyeSyllable);
-  // // syllables[isEyes];
-
-  const eyesyl = randomSyllable(syllables);
-  console.log('eyesyl: ' + eyesyl);
-  const nosesyl = randomSyllable(syllables);
-  console.log('nosesyl: ' + nosesyl);
-  const mouthsyl = randomSyllable(syllables);
-  console.log('mouthsyl: ' + mouthsyl);
+  const eyesyl = partSyllable(eyes, isEyes);
+  const nosesyl = partSyllable(noses, isNose);
+  const mouthsyl = partSyllable(mouths, isMouth);
 
   const imageName =
   'eboy-avtr-' +
@@ -325,13 +314,6 @@ function download() {
   nosesyl +
   mouthsyl +
   '.png';
-  // const imageName =
-  // 'eboy-avtr-' +
-  // isHead +
-  // 'e' + isEyes +
-  // 'n' + isNose +
-  // 'm' + isMouth +
-  // '.png';
   console.log('imageName: ' + imageName);
   this.event.currentTarget.parentNode.setAttribute('href', imagestream);
   this.event.currentTarget.parentNode.setAttribute('download', imageName);
@@ -480,17 +462,13 @@ function toggleSafezone() {
 }
 
 /**
- * return random syllable from array
- * @param {string} array array to choose syllable from
+ * return syllable of array part
+ * @param {string} array parts array to choose syllable from
+ * @param {number} index index of chosen element
  * @return {string} syllable
-
-*/
-function randomSyllable(array) {
-  const l = array.length;
-  // console.log('l: ' + l);
-  const rdmIdx = Math.floor(Math.random() * l);
-  // console.log('rdmIdx: ' + rdmIdx);
-  const s = array[rdmIdx];
-  // console.log('s: ' + s);
+ */
+function partSyllable(array, index) {
+  const s = array[index].s;
+  console.log('s: ' + s);
   return s;
 }
