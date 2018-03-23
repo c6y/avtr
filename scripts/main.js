@@ -134,6 +134,7 @@ function addHead() {
   switchParentClass('headThumbOff', 'headThumbOn');
 
   isHead = this.event.target.id;
+  composeName();
 }
 
 /**
@@ -182,6 +183,7 @@ function addEyes() {
 
       mergeCanvases();
       isEyes = Number(idx);
+      composeName();
     };
 
     // set parent class to active
@@ -226,6 +228,7 @@ function addNose() {
 
       mergeCanvases();
       isNose = Number(idx);
+      composeName();
     };
     switchParentClass('noseThumbOff', 'noseThumbOn');
   }
@@ -268,6 +271,7 @@ function addMouth() {
 
       mergeCanvases();
       isMouth = Number(idx);
+      composeName();
     };
     switchParentClass('mouthThumbOff', 'mouthThumbOn');
   }
@@ -303,18 +307,13 @@ function download() {
   const imagepng = canvas.toDataURL('image/png');
   const imagestream = imagepng.replace('image/png', 'image/octet-stream');
 
-  const eyesyl = partSyllable(eyes, isEyes);
-  const nosesyl = partSyllable(noses, isNose);
-  const mouthsyl = partSyllable(mouths, isMouth);
-
+  // compose name for file
+  const name = composeName();
   const imageName =
   'eboy-avtr-' +
-  isHead +
-  eyesyl +
-  nosesyl +
-  mouthsyl +
+  name +
   '.png';
-  console.log('imageName: ' + imageName);
+
   this.event.currentTarget.parentNode.setAttribute('href', imagestream);
   this.event.currentTarget.parentNode.setAttribute('download', imageName);
 }
@@ -468,7 +467,30 @@ function toggleSafezone() {
  * @return {string} syllable
  */
 function partSyllable(array, index) {
-  const s = array[index].s;
-  console.log('s: ' + s);
-  return s;
+  const syl = array[index].s;
+  return syl;
+}
+
+/**
+ * return syllable of array part
+ * @return {string} the name of the avatar
+ */
+function composeName() {
+  if (isEyes && isNose && isMouth) {
+    console.log('isEyes: ' + isEyes);
+    const eyesyl = partSyllable(eyes, isEyes);
+    console.log('eyesyl: ' + eyesyl);
+    const nosesyl = partSyllable(noses, isNose);
+    const mouthsyl = partSyllable(mouths, isMouth);
+
+    const name =
+    isHead +
+    eyesyl +
+    nosesyl +
+    mouthsyl;
+    console.log('name: ' + name);
+    // set name of download button
+    document.getElementById('avtrName').innerHTML = name;
+    return name;
+  }
 }
