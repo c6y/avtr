@@ -162,41 +162,31 @@ function addEyes() {
   // part number starts at 1, not at zero
   const eyesNameNumber = Number(idx) + 1;
 
-  if (isEyes === eyesNameNumber) {
-    // remove eyes if same eyes is on canvas
+  // draw eyes
+  img.onload = function() {
     const canvas = document.getElementById('eyesCanvas');
     const ctx = canvas.getContext('2d');
+    ctx.mozImageSmoothingEnabled = false;
+    ctx.msImageSmoothingEnabled = false;
+    ctx.imageSmoothingEnabled = false;
     ctx.clearRect(0, 0, avatarW, avatarH);
-    mergeCanvases();
-    isEyes = null;
-    this.event.currentTarget.parentNode.setAttribute('class', 'eyeThumbOff');
-  } else {
-    // draw eyes if there's no or different eyes
-    img.onload = function() {
-      const canvas = document.getElementById('eyesCanvas');
-      const ctx = canvas.getContext('2d');
-      ctx.mozImageSmoothingEnabled = false;
-      ctx.msImageSmoothingEnabled = false;
-      ctx.imageSmoothingEnabled = false;
-      ctx.clearRect(0, 0, avatarW, avatarH);
-      // draw first (left) eye
-      ctx.drawImage(img, iX * unit, iY * unit, iW * unit, iH * unit);
-      // mirror and draw second (right) eye
-      ctx.save();
-      ctx.translate(64 * unit, 0);
-      ctx.scale(-1, 1);
-      ctx.drawImage(img, iX * unit, iY * unit, iW * unit, iH * unit);
-      ctx.restore();
+    // draw first (left) eye
+    ctx.drawImage(img, iX * unit, iY * unit, iW * unit, iH * unit);
+    // mirror and draw second (right) eye
+    ctx.save();
+    ctx.translate(64 * unit, 0);
+    ctx.scale(-1, 1);
+    ctx.drawImage(img, iX * unit, iY * unit, iW * unit, iH * unit);
+    ctx.restore();
 
-      mergeCanvases();
-      isEyes = eyesNameNumber;
-      setDownloadButtonName();
-      // composeName();
-    };
+    mergeCanvases();
+    isEyes = eyesNameNumber;
+    setDownloadButtonName();
+    // composeName();
 
     // set parent class to active
     switchParentClass('eyeThumbOff', 'eyeThumbOn');
-  }
+  };
 }
 
 /**
@@ -213,35 +203,25 @@ function addNose() {
   const iX = noses[idx].x + noseCenter.x - Math.floor(iW / 2);
   const iY = noses[idx].y + noseCenter.y - Math.floor(iH / 2);
 
-  // part number starts at 1, not at zero
+  // part number
   const noseNameNumber = Number(idx) + 1;
 
-  if (isNose === noseNameNumber) {
-    // remove nose if same nose is on canvas
+  // draw nose
+  img.onload = function() {
     const canvas = document.getElementById('noseCanvas');
     const ctx = canvas.getContext('2d');
+    ctx.mozImageSmoothingEnabled = false;
+    ctx.msImageSmoothingEnabled = false;
+    ctx.imageSmoothingEnabled = false;
     ctx.clearRect(0, 0, avatarW, avatarH);
-    mergeCanvases();
-    isNose = null;
-    this.event.currentTarget.parentNode.setAttribute('class', 'noseThumbOff');
-  } else {
-    // draw nose if there's no or different nose
-    img.onload = function() {
-      const canvas = document.getElementById('noseCanvas');
-      const ctx = canvas.getContext('2d');
-      ctx.mozImageSmoothingEnabled = false;
-      ctx.msImageSmoothingEnabled = false;
-      ctx.imageSmoothingEnabled = false;
-      ctx.clearRect(0, 0, avatarW, avatarH);
-      ctx.drawImage(img, iX * unit, iY * unit, iW * unit, iH * unit);
+    ctx.drawImage(img, iX * unit, iY * unit, iW * unit, iH * unit);
 
-      mergeCanvases();
-      isNose = noseNameNumber;
-      setDownloadButtonName();
-      // composeName();
-    };
+    mergeCanvases();
+    isNose = noseNameNumber;
+    setDownloadButtonName();
+    // composeName();
     switchParentClass('noseThumbOff', 'noseThumbOn');
-  }
+  };
 }
 
 /**
@@ -261,32 +241,22 @@ function addMouth() {
   // part number starts at 1, not at zero
   const mouthNameNumber = Number(idx) + 1;
 
-  if (isMouth === mouthNameNumber) {
-    // remove mouth if same mouth is on canvas
+  // draw mouth
+  img.onload = function() {
     const canvas = document.getElementById('mouthCanvas');
     const ctx = canvas.getContext('2d');
+    ctx.mozImageSmoothingEnabled = false;
+    ctx.msImageSmoothingEnabled = false;
+    ctx.imageSmoothingEnabled = false;
     ctx.clearRect(0, 0, avatarW, avatarH);
-    mergeCanvases();
-    isMouth = null;
-    this.event.currentTarget.parentNode.setAttribute('class', 'mouthThumbOff');
-  } else {
-    // draw mouth if there's no or different mouth
-    img.onload = function() {
-      const canvas = document.getElementById('mouthCanvas');
-      const ctx = canvas.getContext('2d');
-      ctx.mozImageSmoothingEnabled = false;
-      ctx.msImageSmoothingEnabled = false;
-      ctx.imageSmoothingEnabled = false;
-      ctx.clearRect(0, 0, avatarW, avatarH);
-      ctx.drawImage(img, iX * unit, iY * unit, iW * unit, iH * unit);
+    ctx.drawImage(img, iX * unit, iY * unit, iW * unit, iH * unit);
 
-      mergeCanvases();
-      isMouth = mouthNameNumber;
-      setDownloadButtonName();
-      // composeName();
-    };
+    mergeCanvases();
+    isMouth = mouthNameNumber;
+    setDownloadButtonName();
+    // composeName();
     switchParentClass('mouthThumbOff', 'mouthThumbOn');
-  }
+  };
 }
 
 /**
