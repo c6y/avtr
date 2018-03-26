@@ -134,7 +134,7 @@ function addHead() {
   switchParentClass('headThumbOff', 'headThumbOn');
 
   isHead = this.event.target.id;
-  composeName();
+  setDownloadButtonName();
 }
 
 /**
@@ -153,9 +153,10 @@ function addEyes() {
   const iX = eyes[idx].x + eyeCenter.x - Math.floor(iW / 2);
   const iY = eyes[idx].y + eyeCenter.y - Math.floor(iH / 2);
 
-  const eyesIndex = Number(idx);
+  // part number starts at 1, not at zero
+  const eyesNameNumber = Number(idx) + 1;
 
-  if (isEyes === eyesIndex) {
+  if (isEyes === eyesNameNumber) {
     // remove eyes if same eyes is on canvas
     const canvas = document.getElementById('eyesCanvas');
     const ctx = canvas.getContext('2d');
@@ -182,8 +183,8 @@ function addEyes() {
       ctx.restore();
 
       mergeCanvases();
-      isEyes = Number(idx);
-      composeName();
+      isEyes = eyesNameNumber;
+      setDownloadButtonName();
     };
 
     // set parent class to active
@@ -205,9 +206,10 @@ function addNose() {
   const iX = noses[idx].x + noseCenter.x - Math.floor(iW / 2);
   const iY = noses[idx].y + noseCenter.y - Math.floor(iH / 2);
 
-  const noseFile = Number(idx);
+  // part number starts at 1, not at zero
+  const noseNameNumber = Number(idx) + 1;
 
-  if (isNose === noseFile) {
+  if (isNose === noseNameNumber) {
     // remove nose if same nose is on canvas
     const canvas = document.getElementById('noseCanvas');
     const ctx = canvas.getContext('2d');
@@ -227,8 +229,8 @@ function addNose() {
       ctx.drawImage(img, iX * unit, iY * unit, iW * unit, iH * unit);
 
       mergeCanvases();
-      isNose = Number(idx);
-      composeName();
+      isNose = noseNameNumber;
+      setDownloadButtonName();
     };
     switchParentClass('noseThumbOff', 'noseThumbOn');
   }
@@ -248,9 +250,10 @@ function addMouth() {
   const iX = mouths[idx].x + mouthCenter.x - Math.floor(iW / 2);
   const iY = mouths[idx].y + mouthCenter.y - Math.floor(iH / 2);
 
-  const mouthFile = Number(idx);
+  // part number starts at 1, not at zero
+  const mouthNameNumber = Number(idx) + 1;
 
-  if (isMouth === mouthFile) {
+  if (isMouth === mouthNameNumber) {
     // remove mouth if same mouth is on canvas
     const canvas = document.getElementById('mouthCanvas');
     const ctx = canvas.getContext('2d');
@@ -270,8 +273,8 @@ function addMouth() {
       ctx.drawImage(img, iX * unit, iY * unit, iW * unit, iH * unit);
 
       mergeCanvases();
-      isMouth = Number(idx);
-      composeName();
+      isMouth = mouthNameNumber;
+      setDownloadButtonName();
     };
     switchParentClass('mouthThumbOff', 'mouthThumbOn');
   }
@@ -461,36 +464,46 @@ function toggleSafezone() {
 }
 
 /**
- * return syllable of array part
- * @param {string} array parts array to choose syllable from
- * @param {number} index index of chosen element
- * @return {string} syllable
- */
-function partSyllable(array, index) {
-  const syl = array[index].s;
-  return syl;
-}
-
-/**
- * return syllable of array part
+ * return avtr name based on part of array used
  * @return {string} the name of the avatar
  */
 function composeName() {
-  if (isEyes && isNose && isMouth) {
-    console.log('isEyes: ' + isEyes);
-    const eyesyl = partSyllable(eyes, isEyes);
-    console.log('eyesyl: ' + eyesyl);
-    const nosesyl = partSyllable(noses, isNose);
-    const mouthsyl = partSyllable(mouths, isMouth);
+  if (isHead && isEyes && isNose && isMouth) {
+    // colorIndex has already been incremented,
+    // so colorDigit won't start at array's zero count
+    const colorDigit = format2Digits(Number(colorIndex));
+
+    const eyeDigit = format2Digits(isEyes);
+    const noseDigit = format2Digits(isNose);
+    const mouthDigit = format2Digits(isMouth);
 
     const name =
     isHead +
-    eyesyl +
-    nosesyl +
-    mouthsyl;
+    colorDigit +
+    eyeDigit +
+    noseDigit +
+    mouthDigit;
     console.log('name: ' + name);
-    // set name of download button
-    document.getElementById('avtrName').innerHTML = name;
     return name;
   }
+}
+
+/**
+ * update name of download button
+ */
+function setDownloadButtonName() {
+  const buttonName = composeName();
+  document.getElementById('avtrName').innerHTML = buttonName;
+}
+
+/**
+ * format any number to two last positive integers
+ * and preface with 0 if lower than 10
+ * @param {number} number any number
+ * @return {string} two digit number
+ */
+function format2Digits(number) {
+  let formattedNumber = ('0' + number).slice(-2);
+  console.log('formattedNumber: ' + formattedNumber);
+  return formattedNumber;
 }
