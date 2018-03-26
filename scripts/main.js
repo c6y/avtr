@@ -9,7 +9,7 @@ let isEyes = null;
 let isNose = null;
 let isMouth = null;
 
-let colorIndex = 0;
+let colorIndex;
 
 let showSafezones = true; // [dev] toggle safezones, default is false;
 
@@ -95,6 +95,18 @@ window.onload = function() {
 function addHead() {
   const colorSetACount = colors.length;
 
+  // calculate color but start at 0 if not defined
+  if (colorIndex === undefined) {
+    colorIndex = 0;
+  } else {
+    // set next color
+    colorIndex++;
+    // set index back to 0 if above count
+    if (colorIndex >= colorSetACount) {
+      colorIndex = 0;
+    }
+  }
+
   // get head shape that is clicked on
   const img = new Image();
   img.src = this.event.target.src;
@@ -123,17 +135,11 @@ function addHead() {
     ctx.drawImage(imgNeck, 0, 0, avatarW, avatarH);
 
     mergeCanvases();
-
-    // set next color
-    colorIndex++;
-    // set index back to 0 if above count
-    if (colorIndex >= colorSetACount) {
-      colorIndex = 0;
-    }
   };
   switchParentClass('headThumbOff', 'headThumbOn');
 
   isHead = this.event.target.id;
+  // composeName();
   setDownloadButtonName();
 }
 
@@ -185,6 +191,7 @@ function addEyes() {
       mergeCanvases();
       isEyes = eyesNameNumber;
       setDownloadButtonName();
+      // composeName();
     };
 
     // set parent class to active
@@ -231,6 +238,7 @@ function addNose() {
       mergeCanvases();
       isNose = noseNameNumber;
       setDownloadButtonName();
+      // composeName();
     };
     switchParentClass('noseThumbOff', 'noseThumbOn');
   }
@@ -275,6 +283,7 @@ function addMouth() {
       mergeCanvases();
       isMouth = mouthNameNumber;
       setDownloadButtonName();
+      // composeName();
     };
     switchParentClass('mouthThumbOff', 'mouthThumbOn');
   }
@@ -366,19 +375,19 @@ function removeMouth() {
 /**
  * assign activeClass to clicked element
  * assign inactiveClass to other element
- * @param {string} inactiveClass inactive class name
- * @param {string} activeClass active class name
+ * @param {string} fromClass inactive class name
+ * @param {string} toClass active class name
  */
-function setThisToActiveClass(inactiveClass, activeClass) {
+function switchThisClass(fromClass, toClass) {
   // remove active class from other active element
-  const elements = document.getElementsByClassName(activeClass);
+  const elements = document.getElementsByClassName(toClass);
   // only take the first element in array (there should only be one)
   const requiredElement = elements[0];
   if (requiredElement) {
-    requiredElement.setAttribute('class', inactiveClass);
+    requiredElement.setAttribute('class', fromClass);
   }
   // set active class to this element
-  this.event.target.setAttribute('class', activeClass);
+  this.event.target.setAttribute('class', toClass);
 }
 
 /**
@@ -401,17 +410,17 @@ function switchParentClass(fromClass, toClass) {
 
 /**
  * find first element with class and replace it with new class
- * @param {string} classFrom class to be replaced
- * @param {string} classTo new class
+ * @param {string} fromClass class to be replaced
+ * @param {string} toClass new class
  */
-function replaceClass(classFrom, classTo) {
+function replaceClass(fromClass, toClass) {
   // find all elements with class
-  const elements = document.getElementsByClassName(classFrom);
+  const elements = document.getElementsByClassName(fromClass);
   // only take the first element in array (there should only be one)
   const requiredElement = elements[0];
   if (requiredElement) {
-    requiredElement.removeAttribute('class', classFrom);
-    requiredElement.setAttribute('class', classTo);
+    requiredElement.removeAttribute('class', fromClass);
+    requiredElement.setAttribute('class', toClass);
   }
 }
 
@@ -420,7 +429,7 @@ function replaceClass(classFrom, classTo) {
  */
 function setActiveTab() {
   // turn other tabs off, current tab to on
-  setThisToActiveClass('tabOff', 'tabOn');
+  switchThisClass('tabOff', 'tabOn');
   const setActive = this.event.target.id;
   if (setActive === 'eyetab') {
     // remove showLib class from other element
@@ -469,10 +478,7 @@ function toggleSafezone() {
  */
 function composeName() {
   if (isHead && isEyes && isNose && isMouth) {
-    // colorIndex has already been incremented,
-    // so colorDigit won't start at array's zero count
-    const colorDigit = format2Digits(Number(colorIndex));
-
+    const colorDigit = format2Digits(Number(colorIndex) + 1);
     const eyeDigit = format2Digits(isEyes);
     const noseDigit = format2Digits(isNose);
     const mouthDigit = format2Digits(isMouth);
@@ -483,7 +489,6 @@ function composeName() {
     eyeDigit +
     noseDigit +
     mouthDigit;
-    console.log('name: ' + name);
     return name;
   }
 }
@@ -492,8 +497,10 @@ function composeName() {
  * update name of download button
  */
 function setDownloadButtonName() {
-  const buttonName = composeName();
-  document.getElementById('avtrName').innerHTML = buttonName;
+  if (isHead && isEyes && isNose && isMouth) {
+    const buttonName = composeName();
+    document.getElementById('avtrName').innerHTML = buttonName;
+  }
 }
 
 /**
@@ -504,6 +511,5 @@ function setDownloadButtonName() {
  */
 function format2Digits(number) {
   let formattedNumber = ('0' + number).slice(-2);
-  console.log('formattedNumber: ' + formattedNumber);
   return formattedNumber;
 }
