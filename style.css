@@ -166,6 +166,17 @@ button {
   width: 512px;
 }
 
+.hideDownload {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.showDownload {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s linear 0s, opacity 1500ms;
+}
+
 .copyright {
   font-size: 0.75em;
   margin: auto;

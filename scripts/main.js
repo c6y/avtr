@@ -136,11 +136,12 @@ function addHead() {
 
     mergeCanvases();
   };
-  switchParentClass('headThumbOff', 'headThumbOn');
-
   isHead = this.event.target.id;
   // composeName();
   setAvtrName();
+  toggleShowDownload();
+  // set parent class to active
+  switchParentClass('headThumbOff', 'headThumbOn');
 }
 
 /**
@@ -180,10 +181,10 @@ function addEyes() {
     ctx.restore();
 
     mergeCanvases();
-    isEyes = eyesNameNumber;
-    setAvtrName();
-    // composeName();
   };
+  isEyes = eyesNameNumber;
+  setAvtrName();
+  toggleShowDownload();
   // set parent class to active
   switchParentClass('eyeThumbOff', 'eyeThumbOn');
 }
@@ -216,10 +217,10 @@ function addNose() {
     ctx.drawImage(img, iX * unit, iY * unit, iW * unit, iH * unit);
 
     mergeCanvases();
-    isNose = noseNameNumber;
-    setAvtrName();
-    // composeName();
   };
+  isNose = noseNameNumber;
+  setAvtrName();
+  toggleShowDownload();
   // set parent class to active
   switchParentClass('noseThumbOff', 'noseThumbOn');
 }
@@ -252,10 +253,10 @@ function addMouth() {
     ctx.drawImage(img, iX * unit, iY * unit, iW * unit, iH * unit);
 
     mergeCanvases();
-    isMouth = mouthNameNumber;
-    setAvtrName();
-    // composeName();
   };
+  isMouth = mouthNameNumber;
+  setAvtrName();
+  toggleShowDownload();
   // set parent class to active
   switchParentClass('mouthThumbOff', 'mouthThumbOn');
 }
@@ -444,11 +445,10 @@ function format2Digits(number) {
 }
 
 /**
- * update name of download button
+ * show download button, only if head, eyes, nose and mouth are set
  */
-function toggleDownload() {
-  console.log('TOGGLE');
-  // if (isHead && isEyes && isNose && isMouth) {
-  //   replaceClass('hideDownload', 'showDownload');
-  // }
+function toggleShowDownload() {
+  if (isHead && isEyes && isNose && isMouth) {
+    replaceClass('hideDownload', 'showDownload');
+  }
 }
