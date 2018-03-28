@@ -9,7 +9,7 @@ let isEyes = null;
 let isNose = null;
 let isMouth = null;
 
-let colorIndex;
+let colorIndex = null;
 
 let showSafezones = true; // [dev] toggle safezones, default is false;
 
@@ -96,7 +96,7 @@ function addHead() {
   const colorSetACount = colors.length;
 
   // calculate color but start at 0 if not defined
-  if (colorIndex === undefined) {
+  if (colorIndex === null) {
     colorIndex = 0;
   } else {
     // set next color
@@ -140,7 +140,7 @@ function addHead() {
 
   isHead = this.event.target.id;
   // composeName();
-  setDownloadButtonName();
+  setAvtrName();
 }
 
 /**
@@ -181,12 +181,11 @@ function addEyes() {
 
     mergeCanvases();
     isEyes = eyesNameNumber;
-    setDownloadButtonName();
+    setAvtrName();
     // composeName();
-
-    // set parent class to active
-    switchParentClass('eyeThumbOff', 'eyeThumbOn');
   };
+  // set parent class to active
+  switchParentClass('eyeThumbOff', 'eyeThumbOn');
 }
 
 /**
@@ -218,10 +217,11 @@ function addNose() {
 
     mergeCanvases();
     isNose = noseNameNumber;
-    setDownloadButtonName();
+    setAvtrName();
     // composeName();
-    switchParentClass('noseThumbOff', 'noseThumbOn');
   };
+  // set parent class to active
+  switchParentClass('noseThumbOff', 'noseThumbOn');
 }
 
 /**
@@ -253,10 +253,11 @@ function addMouth() {
 
     mergeCanvases();
     isMouth = mouthNameNumber;
-    setDownloadButtonName();
+    setAvtrName();
     // composeName();
-    switchParentClass('mouthThumbOff', 'mouthThumbOn');
   };
+  // set parent class to active
+  switchParentClass('mouthThumbOff', 'mouthThumbOn');
 }
 
 /**
@@ -300,48 +301,6 @@ function download() {
   this.event.currentTarget.parentNode.setAttribute('download', imageName);
 }
 
-/**
- * remove eyes from canvas
- */
-function removeHead() {
-  const canvas = document.getElementById('headCanvas');
-  const ctx = canvas.getContext('2d');
-  ctx.clearRect(0, 0, avatarW, avatarH);
-  mergeCanvases();
-  this.event.target.setAttribute('class', 'headElement');
-}
-
-/**
- * remove eyes from canvas
- */
-function removeEyes() {
-  const canvas = document.getElementById('eyesCanvas');
-  const ctx = canvas.getContext('2d');
-  ctx.clearRect(0, 0, avatarW, avatarH);
-  mergeCanvases();
-}
-
-/**
- * remove nose from canvas
- */
-function removeNose() {
-  const canvas = document.getElementById('noseCanvas');
-  const ctx = canvas.getContext('2d');
-  ctx.clearRect(0, 0, avatarW, avatarH);
-  mergeCanvases();
-}
-
-/**
- * remove mouth from canvas
- */
-function removeMouth() {
-  const canvas = document.getElementById('mouthCanvas');
-  const ctx = canvas.getContext('2d');
-  ctx.clearRect(0, 0, avatarW, avatarH);
-  mergeCanvases();
-}
-
-// DELETE FUNCTION?
 /**
  * assign activeClass to clicked element
  * assign inactiveClass to other element
@@ -466,10 +425,10 @@ function composeName() {
 /**
  * update name of download button
  */
-function setDownloadButtonName() {
+function setAvtrName() {
   if (isHead && isEyes && isNose && isMouth) {
-    const buttonName = composeName();
-    document.getElementById('avtrName').innerHTML = buttonName;
+    const name = composeName();
+    document.getElementById('avtrName').innerHTML = name;
   }
 }
 
@@ -482,4 +441,14 @@ function setDownloadButtonName() {
 function format2Digits(number) {
   let formattedNumber = ('0' + number).slice(-2);
   return formattedNumber;
+}
+
+/**
+ * update name of download button
+ */
+function toggleDownload() {
+  console.log('TOGGLE');
+  // if (isHead && isEyes && isNose && isMouth) {
+  //   replaceClass('hideDownload', 'showDownload');
+  // }
 }
