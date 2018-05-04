@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Bangers');
+
 body {
   background-color: #fff;
   font-size: 16px;
@@ -56,25 +58,33 @@ body {
 }
 
 #tabs {
-  border-bottom: 1px solid black;
+/*   border-bottom: 1px solid black; */
   margin: auto;
-  padding: 4px 0 4px 0;
+  padding: 4px 0 8px 0;
   width: 512px;
+  baseline-shift: 5px;
 }
 
 .tabOn,
 .tabOff {
-  padding: 4px 12px 4px 12px;
+  padding: 4px 12px 8px 12px;
+    font-family: 'Bangers', cursive;
+/*   text-transform: uppercase; */
+  /* font-style: italic; */
+  font-size: 20px;
+
 }
 
 .tabOn {
-  background-color: black;
-  color: #eee;
+  background-color: #eee;
+  color: black;
   user-select: none;
+/*   vertical-align: 2px; */
 }
 
 .tabOff {
-  background-color: #eee;
+  background-color: #fff;
+  color: #999;
   cursor: pointer;
 }
 
@@ -84,6 +94,7 @@ body {
   margin: auto;
   width: 512px;
   z-index: 100;
+/*   border-top: 6px solid #eee; */
 }
 
 .headThumbOn img,
@@ -146,13 +157,31 @@ body {
 .noseThumbOff,
 .mouthThumbOff {
   background-color: #eee;
+
+}
+
+.headThumbOff img,
+.eyeThumbOff img,
+.noseThumbOff img,
+.mouthThumbOff img{
+    opacity: 0.3;
 }
 
 .headThumbOn,
 .eyeThumbOn,
 .noseThumbOn,
 .mouthThumbOn {
-  background-color: #ccc;
+/*   background-color: #ccc; */
+  background-color: #eee;
+/*   box-sizing: border-box; */
+/*   border: 2px solid #000; */
+}
+
+.headThumbOn img,
+.eyeThumbOn img,
+.noseThumbOn img,
+.mouthThumbOn img {
+/*   margin: 2px; */
 }
 
 button {
@@ -162,7 +191,7 @@ button {
 #download-box {
   margin: auto;
   margin-bottom: 8px;
-  margin-top: 32px;
+  margin-top: 18px;
   width: 512px;
 }
 
@@ -181,6 +210,7 @@ button {
   font-size: 0.75em;
   margin: auto;
   width: 512px;
+  color: #999;
 }
 
 #safezone {
