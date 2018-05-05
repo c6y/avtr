@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Bangers');
+@import url('https://fonts.googleapis.com/css?family=Delius+Unicase');
 
 body {
   background-color: #fff;
@@ -66,9 +67,9 @@ body {
 
 .tabOn,
 .tabOff {
-  padding: 4px 12px 8px 12px;
+  padding: 4px 16px 8px 12px;
   font-family: 'Bangers', cursive;
-  font-size: 20px;
+  font-size: 36px;
 }
 
 .tabOn {
@@ -105,12 +106,6 @@ body {
   object-fit: contain;
   width: 56px;
 }
-
-/* .mouthThumbOn img,
-.mouthThumbOff img {
-  height: 32px;
-  width: 80px;
-} */
 
 #library img {
   image-rendering: pixelated;
@@ -152,7 +147,6 @@ body {
 .noseThumbOff,
 .mouthThumbOff {
   background-color: #eee;
-
 }
 
 .headThumbOff img,
@@ -184,24 +178,24 @@ button {
   color: #999;
   text-decoration: none;
   background-color: #fff;
-  font-size: 20px;
-  font-family: 'Bangers', cursive;
-  padding: 2px 8px 2px 6px;
+  padding: 2px 6px 2px 6px;
   border-radius: 8px;
   border: 1px solid #999;
-  /* box-shadow: inset 0 0 4px #555; */
-  /* box-shadow: 0 0 4px #555; */
   cursor: pointer;
 }
 
 #download:hover {
   color: #333;
+  border: 1px solid #333;
 }
 
 #avtrName {
-  font-size: 20px;
   color: #999;
-  font-family: 'Bangers', cursive;
+}
+
+#download, #avtrName {
+  font-family: 'Delius Unicase', cursive;
+  font-size: 12px;
 }
 
 .hideDownload {
@@ -216,11 +210,12 @@ button {
 }
 
 .copyright {
-  font-size: 0.75em;
+  font-size: 12px;
   margin: auto;
   width: 512px;
   color: #999;
   padding-top: 4px;
+  font-family: 'Delius Unicase', cursive;
 }
 
 #safezone {
