@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Bangers');
-@import url('https://fonts.googleapis.com/css?family=Delius+Unicase');
+
+@font-face {
+  font-family: 'Back Issues BB';
+  src: url('lib/fonts/BackIssuesBB_reg.otf');
+}
 
 body {
   background-color: #fff;
@@ -178,7 +182,7 @@ button {
   color: #999;
   text-decoration: none;
   background-color: #fff;
-  padding: 2px 6px 2px 6px;
+  padding: 3px 6px 2px 6px;
   border-radius: 8px;
   border: 1px solid #999;
   cursor: pointer;
@@ -194,7 +198,7 @@ button {
 }
 
 #download, #avtrName {
-  font-family: 'Delius Unicase', cursive;
+  font-family: 'Back Issues BB', cursive;
   font-size: 12px;
 }
 
@@ -214,8 +218,8 @@ button {
   margin: auto;
   width: 512px;
   color: #999;
-  padding-top: 4px;
-  font-family: 'Delius Unicase', cursive;
+  padding-top: 6px;
+  font-family: 'Back Issues BB', cursive;
 }
 
 #safezone {
