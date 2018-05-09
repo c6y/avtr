@@ -83,10 +83,50 @@ for (m = 0; m < mouthsCount; m++) {
     '" /></span>';
 }
 
+/**
+ * add a default head to head canvas
+ */
+function defaultHead() {
+  const colorSetACount = colors.length;
+  console.log('colorSetACount: ' + colorSetACount);
+
+  // get default head shape
+  const img = new Image();
+  img.src = 'media/head/head-001.svg';
+
+  // get default neck shape
+  const imgNeck = new Image();
+  imgNeck.src = dir + '/media/neck/neck-001.svg';
+
+  img.onload = function() {
+    const canvas = document.getElementById('headCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // draw head
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.drawImage(img, 0, 0, avatarW, avatarH);
+
+    // draw neck
+    ctx.globalCompositeOperation = 'destination-over';
+    ctx.drawImage(imgNeck, 0, 0, avatarW, avatarH);
+
+    // color head
+    ctx.globalCompositeOperation = 'source-atop';
+    // const newColor = colors[0];
+    const newColor = '#eee';
+    ctx.fillStyle = newColor;
+    ctx.strokeStyle = 'blue';
+    ctx.fillRect(0, 0, avatarW, avatarH);
+
+    mergeCanvases();
+  };
+}
+
 window.onload = function() {
   document.getElementById('eyes').innerHTML = imgElementEye;
   document.getElementById('noses').innerHTML = imgElementNose;
   document.getElementById('mouths').innerHTML = imgElementMouth;
+  defaultHead();
 };
 
 /**
