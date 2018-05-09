@@ -94,6 +94,10 @@ body {
   cursor: pointer;
 }
 
+.tabUndef {
+  visibility: hidden;
+}
+
 #library {
   display: flex;
   flex-direction: column;

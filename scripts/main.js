@@ -176,6 +176,7 @@ function addHead() {
   toggleShowDownload();
   // set parent class to active
   switchParentClass('headThumbOff', 'headThumbOn');
+  removeClass('tabUndef', 'eyetab');
 }
 
 /**
@@ -221,6 +222,7 @@ function addEyes() {
   toggleShowDownload();
   // set parent class to active
   switchParentClass('eyeThumbOff', 'eyeThumbOn');
+  removeClass('tabUndef', 'nosetab');
 }
 
 /**
@@ -257,6 +259,7 @@ function addNose() {
   toggleShowDownload();
   // set parent class to active
   switchParentClass('noseThumbOff', 'noseThumbOn');
+  removeClass('tabUndef', 'mouthtab');
 }
 
 /**
@@ -334,6 +337,17 @@ function download() {
 
   this.event.currentTarget.parentNode.setAttribute('href', imagestream);
   this.event.currentTarget.parentNode.setAttribute('download', imageName);
+}
+
+/**
+ * remove a specifc class from element with id
+ * (but keeps other classes of element intact)
+ * @param {string} cl class name to be removed
+ * @param {string} id of element
+ */
+function removeClass(cl, id) {
+  const element = document.getElementById(id);
+  element.classList.remove(cl);
 }
 
 /**
