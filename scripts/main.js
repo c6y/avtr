@@ -121,9 +121,10 @@ window.onload = function() {
 function addHead() {
   const colorSetACount = colors.length;
 
-  // calculate color but start at 0 if not defined
+  // calculate next color, but take random color the first time
   if (colorIndex === null) {
-    colorIndex = 0;
+    // calculate random color index
+    colorIndex = Math.floor(Math.random() * colorSetACount);
   } else {
     // set next color
     colorIndex++;
