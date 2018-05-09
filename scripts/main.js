@@ -84,12 +84,9 @@ for (m = 0; m < mouthsCount; m++) {
 }
 
 /**
- * add a default head to head canvas
+ * draw an initial grey head to canvas
  */
 function defaultHead() {
-  const colorSetACount = colors.length;
-  console.log('colorSetACount: ' + colorSetACount);
-
   // get default head shape
   const img = new Image();
   img.src = 'media/head/head-001.svg';
@@ -110,12 +107,9 @@ function defaultHead() {
     ctx.globalCompositeOperation = 'destination-over';
     ctx.drawImage(imgNeck, 0, 0, avatarW, avatarH);
 
-    // color head
+    // color head and neck
     ctx.globalCompositeOperation = 'source-atop';
-    // const newColor = colors[0];
-    const newColor = '#eee';
-    ctx.fillStyle = newColor;
-    ctx.strokeStyle = 'blue';
+    ctx.fillStyle = '#eee';
     ctx.fillRect(0, 0, avatarW, avatarH);
 
     mergeCanvases();
