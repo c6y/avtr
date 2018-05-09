@@ -1,8 +1,13 @@
-@import url('https://fonts.googleapis.com/css?family=Bangers');
+/* @import url('https://fonts.googleapis.com/css?family=Bangers'); */
 
 @font-face {
   font-family: 'Back Issues BB';
   src: url('lib/fonts/BackIssuesBB_reg.otf');
+}
+
+@font-face {
+  font-family: 'DigitalStrip BB';
+  src: url('lib/fonts/DigitalStripBB_Reg.otf');
 }
 
 body {
@@ -72,8 +77,8 @@ body {
 .tabOn,
 .tabOff {
   padding: 4px 16px 8px 12px;
-  font-family: 'Bangers', cursive;
-  font-size: 36px;
+  font-family: 'DigitalStrip BB', cursive;
+  font-size: 32px;
 }
 
 .tabOn {
