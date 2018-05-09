@@ -182,7 +182,7 @@ button {
 
 #download-box {
   margin: auto;
-  margin-bottom: 8px;
+  /* margin-bottom: 8px; */
   margin-top: 18px;
   width: 512px;
 }
