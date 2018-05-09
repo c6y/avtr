@@ -89,11 +89,7 @@ for (m = 0; m < mouthsCount; m++) {
 function defaultHead() {
   // get default head shape
   const img = new Image();
-  img.src = 'media/head/head-001.svg';
-
-  // get default neck shape
-  const imgNeck = new Image();
-  imgNeck.src = dir + '/media/neck/neck-001.svg';
+  img.src = 'media/head/head-placeholder.svg';
 
   img.onload = function() {
     const canvas = document.getElementById('headCanvas');
@@ -103,13 +99,9 @@ function defaultHead() {
     ctx.globalCompositeOperation = 'source-over';
     ctx.drawImage(img, 0, 0, avatarW, avatarH);
 
-    // draw neck
-    ctx.globalCompositeOperation = 'destination-over';
-    ctx.drawImage(imgNeck, 0, 0, avatarW, avatarH);
-
     // color head and neck
     ctx.globalCompositeOperation = 'source-atop';
-    ctx.fillStyle = '#eee';
+    ctx.fillStyle = '#999';
     ctx.fillRect(0, 0, avatarW, avatarH);
 
     mergeCanvases();
