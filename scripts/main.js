@@ -395,27 +395,21 @@ function setActiveTab() {
   // turn other tabs off, current tab to on
   switchThisClass('tabOff', 'tabOn');
   const setActive = this.event.target.id;
+  // remove showLib class from other element
+  replaceClass('showLib', 'hideLib');
   if (setActive === 'eyetab') {
-    // remove showLib class from other element
-    replaceClass('showLib', 'hideLib');
     // set showLib class to element 'eyes'
     const setActiveElement = document.getElementById('eyes');
     setActiveElement.setAttribute('class', 'showLib');
   } else if (setActive === 'nosetab') {
-    // remove showLib class from other element
-    replaceClass('showLib', 'hideLib');
     // set showLib class to element 'noses'
     const setActiveElement = document.getElementById('noses');
     setActiveElement.setAttribute('class', 'showLib');
   } else if (setActive === 'mouthtab') {
-    // remove showLib class from other element
-    replaceClass('showLib', 'hideLib');
     // set showLib class to element 'mouths'
     const setActiveElement = document.getElementById('mouths');
     setActiveElement.setAttribute('class', 'showLib');
   } else if (setActive === 'shapetab') {
-    // remove active class from other element
-    replaceClass('showLib', 'hideLib');
     // set showLib class to element 'shapes'
     const setActiveElement = document.getElementById('shapes');
     setActiveElement.setAttribute('class', 'showLib');
