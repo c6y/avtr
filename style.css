@@ -92,10 +92,21 @@ body {
   background-color: #fff;
   color: #999;
   cursor: pointer;
+  visibility: visible;
+  opacity: 1;
+  top: 0;
+  position: relative;
+  z-index: 1;
+  transition:
+    visibility  0s,
+    opacity 100ms linear,
+    top 100ms ease-out;
 }
 
 .tabUndef {
   visibility: hidden;
+  opacity: 0;
+  top: 2em;
 }
 
 #library {
@@ -103,6 +114,7 @@ body {
   flex-direction: column;
   margin: auto;
   width: 512px;
+  position: relative;
   z-index: 100;
 }
 
@@ -197,6 +209,12 @@ button {
   cursor: pointer;
 }
 
+#download,
+#avtrName {
+  font-family: 'Back Issues BB', cursive;
+  font-size: 12px;
+}
+
 #download:hover {
   color: #333;
   border: 1px solid #333;
@@ -204,11 +222,6 @@ button {
 
 #avtrName {
   color: #999;
-}
-
-#download, #avtrName {
-  font-family: 'Back Issues BB', cursive;
-  font-size: 12px;
 }
 
 .hideDownload {
