@@ -304,8 +304,8 @@ function mergeCanvases() {
   const ctx = canvas.getContext('2d');
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = 'white';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  // ctx.fillStyle = '#fff';
+  // ctx.fillRect(0, 0, canvas.width, canvas.height);
   ctx.drawImage(headC, 0, 0);
   ctx.drawImage(eyesC, 0, 0);
   ctx.drawImage(noseC, 0, 0);
