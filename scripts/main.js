@@ -84,7 +84,7 @@ for (m = 0; m < mouthsCount; m++) {
 }
 
 /**
- * draw an initial grey head to canvas
+ * draw an initial grey outlined head to canvas
  */
 function defaultHead() {
   // get default head shape
